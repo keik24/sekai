@@ -1,30 +1,56 @@
-// Use Node.js serverless runtime — FRED API blocks Vercel Edge IPs
-export const config = { maxDuration: 30 };
+import { getCorsHeaders, isDisallowedOrigin } from './_cors.js';
+export const config = { runtime: 'edge' };
 
-export default async function handler(req, res) {
-  // CORS
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+export default async function handler(req) {
+  const corsHeaders = getCorsHeaders(req, 'GET, OPTIONS');
 
   if (req.method === 'OPTIONS') {
-    return res.status(204).end();
+    if (isDisallowedOrigin(req)) {
+      return new Response(null, { status: 403, headers: corsHeaders });
+    }
+    return new Response(null, { status: 204, headers: corsHeaders });
   }
 
   if (req.method !== 'GET') {
-    return res.status(405).json({ error: 'Method not allowed' });
+    return new Response(JSON.stringify({ error: 'Method not allowed' }), {
+      status: 405,
+      headers: { 'Content-Type': 'application/json', ...corsHeaders },
+    });
   }
 
-  const { series_id: seriesId, observation_start: observationStart, observation_end: observationEnd } = req.query;
+  if (isDisallowedOrigin(req)) {
+    return new Response(JSON.stringify({ error: 'Origin not allowed' }), {
+      status: 403,
+      headers: { 'Content-Type': 'application/json', ...corsHeaders },
+    });
+  }
+
+  const url = new URL(req.url);
+  const seriesId = url.searchParams.get('series_id');
+  const observationStart = url.searchParams.get('observation_start');
+  const observationEnd = url.searchParams.get('observation_end');
 
   if (!seriesId) {
-    return res.status(400).json({ error: 'Missing series_id parameter' });
+    return new Response(JSON.stringify({ error: 'Missing series_id parameter' }), {
+      status: 400,
+      headers: { 'Content-Type': 'application/json', ...corsHeaders },
+    });
   }
 
   const apiKey = process.env.FRED_API_KEY;
   if (!apiKey) {
-    res.setHeader('Cache-Control', 'public, max-age=300, s-maxage=300, stale-while-revalidate=60');
-    return res.status(200).json({ observations: [], skipped: true, reason: 'FRED_API_KEY not configured' });
+    return new Response(JSON.stringify({
+      observations: [],
+      skipped: true,
+      reason: 'FRED_API_KEY not configured',
+    }), {
+      status: 200,
+      headers: {
+        'Content-Type': 'application/json',
+        'Cache-Control': 'public, max-age=300, s-maxage=300, stale-while-revalidate=60',
+        ...corsHeaders,
+      },
+    });
   }
 
   try {
@@ -40,19 +66,24 @@ export default async function handler(req, res) {
     if (observationEnd) params.set('observation_end', observationEnd);
 
     const fredUrl = `https://api.stlouisfed.org/fred/series/observations?${params}`;
-    const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), 20000);
     const response = await fetch(fredUrl, {
       headers: { 'Accept': 'application/json' },
-      signal: controller.signal,
     });
-    clearTimeout(timeout);
 
     const data = await response.json();
 
-    res.setHeader('Cache-Control', 'public, max-age=3600, s-maxage=3600, stale-while-revalidate=600');
-    return res.status(response.status).json(data);
+    return new Response(JSON.stringify(data), {
+      status: response.status,
+      headers: {
+        'Content-Type': 'application/json',
+        'Cache-Control': 'public, max-age=3600, s-maxage=3600, stale-while-revalidate=600',
+        ...corsHeaders,
+      },
+    });
   } catch (error) {
-    return res.status(500).json({ error: error.message });
+    return new Response(JSON.stringify({ error: error.message }), {
+      status: 500,
+      headers: { 'Content-Type': 'application/json', ...corsHeaders },
+    });
   }
 }

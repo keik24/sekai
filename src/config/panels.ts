@@ -395,7 +395,7 @@ const JAPAN_PANELS: Record<string, PanelConfig> = {
   // 世界の専門分野
   energy: { name: 'エネルギー・資源', enabled: true, priority: 2 },
   finance: { name: '金融ニュース', enabled: true, priority: 2 },
-  economic: { name: '経済指標', enabled: true, priority: 2 },
+  economic: { name: '経済指標', enabled: false, priority: 2 },
   heatmap: { name: 'セクターヒートマップ', enabled: true, priority: 2 },
   'macro-signals': { name: 'マーケットレーダー', enabled: true, priority: 2 },
   'etf-flows': { name: 'BTC ETF', enabled: true, priority: 2 },
