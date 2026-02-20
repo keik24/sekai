@@ -976,6 +976,14 @@ const JAPAN_FEEDS: Record<string, Feed[]> = {
     { name: 'BBC Japan', url: rss('https://news.google.com/rss/search?q=site:bbc.com/japanese+when:2d&hl=ja&gl=JP&ceid=JP:ja') },
     { name: 'CNN Japan', url: rss('https://news.google.com/rss/search?q=site:cnn.co.jp+when:2d&hl=ja&gl=JP&ceid=JP:ja') },
   ],
+  // 世界のニュース（英語ソース）
+  world: [
+    { name: 'Reuters', url: rss('https://feeds.reuters.com/reuters/worldNews') },
+    { name: 'AP News', url: rss('https://rsshub.app/apnews/topics/world-news') },
+    { name: 'BBC World', url: rss('https://feeds.bbci.co.uk/news/world/rss.xml') },
+    { name: 'Al Jazeera', url: rss('https://www.aljazeera.com/xml/rss/all.xml') },
+    { name: 'Guardian World', url: rss('https://www.theguardian.com/world/rss') },
+  ],
   // マーケット
   markets: [
     { name: '日経マーケット', url: rss('https://news.google.com/rss/search?q=日経平均+OR+TOPIX+OR+為替+OR+株式市場+when:1d&hl=ja&gl=JP&ceid=JP:ja') },
