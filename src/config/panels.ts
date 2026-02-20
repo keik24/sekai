@@ -371,7 +371,7 @@ const FINANCE_MOBILE_MAP_LAYERS: MapLayers = {
 // JAPAN VARIANT (Japan News & Disaster)
 // ============================================
 const JAPAN_PANELS: Record<string, PanelConfig> = {
-  map: { name: '日本マップ', enabled: true, priority: 1 },
+  map: { name: 'Sekai マップ', enabled: true, priority: 1 },
   'live-news': { name: '速報ニュース', enabled: true, priority: 1 },
   insights: { name: 'AIサマリー', enabled: true, priority: 1 },
   national: { name: '全国ニュース', enabled: true, priority: 1 },
@@ -382,28 +382,44 @@ const JAPAN_PANELS: Record<string, PanelConfig> = {
   markets: { name: 'マーケット', enabled: true, priority: 1 },
   tech: { name: 'テクノロジー', enabled: true, priority: 1 },
   github: { name: 'GitHub Trending', enabled: true, priority: 1 },
+  ai: { name: 'AI/ML', enabled: true, priority: 1 },
   sports: { name: 'スポーツ', enabled: true, priority: 2 },
   entertainment: { name: 'エンタメ', enabled: true, priority: 2 },
   stablecoins: { name: 'ステーブルコイン', enabled: true, priority: 2 },
+  // 世界の地域ニュース
+  world: { name: '世界のニュース', enabled: true, priority: 2 },
+  middleeast: { name: '中東', enabled: true, priority: 2 },
+  asia: { name: 'アジア太平洋', enabled: true, priority: 2 },
+  africa: { name: 'アフリカ', enabled: true, priority: 2 },
+  latam: { name: '中南米', enabled: true, priority: 2 },
+  // 世界の専門分野
+  energy: { name: 'エネルギー・資源', enabled: true, priority: 2 },
+  finance: { name: '金融ニュース', enabled: true, priority: 2 },
+  economic: { name: '経済指標', enabled: true, priority: 2 },
+  heatmap: { name: 'セクターヒートマップ', enabled: true, priority: 2 },
+  'macro-signals': { name: 'マーケットレーダー', enabled: true, priority: 2 },
+  'etf-flows': { name: 'BTC ETF', enabled: true, priority: 2 },
+  layoffs: { name: 'レイオフ', enabled: true, priority: 2 },
+  climate: { name: '気候変動', enabled: true, priority: 2 },
+  // 日本の地方ニュース
   regional_north: { name: '北海道・東北', enabled: true, priority: 2 },
   regional_kanto: { name: '関東', enabled: true, priority: 2 },
   regional_central: { name: '中部・関西', enabled: true, priority: 2 },
   regional_west: { name: '中国・四国・九州・沖縄', enabled: true, priority: 2 },
   international: { name: '国際（日本語）', enabled: true, priority: 2 },
-  world: { name: '世界のニュース', enabled: true, priority: 2 },
   monitors: { name: 'マイモニター', enabled: true, priority: 2 },
 };
 
 const JAPAN_MAP_LAYERS: MapLayers = {
-  conflicts: false,
+  conflicts: true,
   bases: false,
   cables: false,
   pipelines: false,
-  hotspots: false,
+  hotspots: true,
   ais: false,
   nuclear: true,
   irradiators: false,
-  sanctions: false,
+  sanctions: true,
   weather: true,
   economic: true,
   waterways: false,

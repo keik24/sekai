@@ -993,6 +993,58 @@ const JAPAN_FEEDS: Record<string, Feed[]> = {
     { name: '日経マーケット', url: rss('https://news.google.com/rss/search?q=日経平均+OR+TOPIX+OR+為替+OR+株式市場+when:1d&hl=ja&gl=JP&ceid=JP:ja') },
     { name: '仮想通貨', url: rss('https://news.google.com/rss/search?q=ビットコイン+OR+仮想通貨+OR+暗号資産+when:2d&hl=ja&gl=JP&ceid=JP:ja') },
   ],
+  // AI/ML
+  ai: [
+    { name: 'AI News', url: rss('https://news.google.com/rss/search?q=(OpenAI+OR+Anthropic+OR+Google+AI+OR+"large+language+model"+OR+ChatGPT)+when:2d&hl=en-US&gl=US&ceid=US:en') },
+    { name: 'VentureBeat AI', url: rss('https://venturebeat.com/category/ai/feed/') },
+    { name: 'The Verge AI', url: rss('https://www.theverge.com/rss/ai-artificial-intelligence/index.xml') },
+    { name: 'ArXiv AI', url: rss('https://export.arxiv.org/rss/cs.AI') },
+    { name: 'AI ニュース（日本語）', url: rss('https://news.google.com/rss/search?q=AI+人工知能+OR+ChatGPT+OR+生成AI+when:2d&hl=ja&gl=JP&ceid=JP:ja') },
+  ],
+  // 中東
+  middleeast: [
+    { name: 'BBC Middle East', url: rss('https://feeds.bbci.co.uk/news/world/middle_east/rss.xml') },
+    { name: 'Al Jazeera', url: rss('https://www.aljazeera.com/xml/rss/all.xml') },
+    { name: 'Al Arabiya', url: rss('https://news.google.com/rss/search?q=site:english.alarabiya.net+when:2d&hl=en-US&gl=US&ceid=US:en') },
+    { name: 'Guardian ME', url: rss('https://www.theguardian.com/world/middleeast/rss') },
+  ],
+  // アジア太平洋
+  asia: [
+    { name: 'BBC Asia', url: rss('https://feeds.bbci.co.uk/news/world/asia/rss.xml') },
+    { name: 'South China Morning Post', url: rss('https://www.scmp.com/rss/91/feed/') },
+    { name: 'Nikkei Asia', url: rss('https://news.google.com/rss/search?q=site:asia.nikkei.com+when:3d&hl=en-US&gl=US&ceid=US:en') },
+    { name: 'Reuters Asia', url: rss('https://news.google.com/rss/search?q=site:reuters.com+(China+OR+Japan+OR+Taiwan+OR+Korea)+when:3d&hl=en-US&gl=US&ceid=US:en') },
+    { name: 'CNA', url: rss('https://www.channelnewsasia.com/api/v1/rss-outbound-feed?_format=xml') },
+  ],
+  // アフリカ
+  africa: [
+    { name: 'BBC Africa', url: rss('https://feeds.bbci.co.uk/news/world/africa/rss.xml') },
+    { name: 'Africa News', url: rss('https://news.google.com/rss/search?q=(Africa+OR+Nigeria+OR+Kenya+OR+"South+Africa"+OR+Ethiopia)+when:2d&hl=en-US&gl=US&ceid=US:en') },
+  ],
+  // 中南米
+  latam: [
+    { name: 'BBC Latin America', url: rss('https://feeds.bbci.co.uk/news/world/latin_america/rss.xml') },
+    { name: 'Guardian Americas', url: rss('https://www.theguardian.com/world/americas/rss') },
+    { name: 'Latin America', url: rss('https://news.google.com/rss/search?q=(Brazil+OR+Mexico+OR+Argentina+OR+Venezuela+OR+Colombia)+when:2d&hl=en-US&gl=US&ceid=US:en') },
+  ],
+  // エネルギー・資源
+  energy: [
+    { name: 'Oil & Gas', url: rss('https://news.google.com/rss/search?q=(oil+price+OR+OPEC+OR+"natural+gas"+OR+pipeline+OR+LNG)+when:2d&hl=en-US&gl=US&ceid=US:en') },
+    { name: 'Nuclear Energy', url: rss('https://news.google.com/rss/search?q=("nuclear+energy"+OR+"nuclear+power"+OR+uranium+OR+IAEA)+when:3d&hl=en-US&gl=US&ceid=US:en') },
+    { name: 'エネルギーニュース', url: rss('https://news.google.com/rss/search?q=原油+OR+エネルギー+OR+再生可能エネルギー+when:2d&hl=ja&gl=JP&ceid=JP:ja') },
+  ],
+  // 金融ニュース
+  finance: [
+    { name: 'CNBC', url: rss('https://www.cnbc.com/id/100003114/device/rss/rss.html') },
+    { name: 'MarketWatch', url: rss('https://news.google.com/rss/search?q=site:marketwatch.com+markets+when:1d&hl=en-US&gl=US&ceid=US:en') },
+    { name: 'Financial Times', url: rss('https://www.ft.com/rss/home') },
+    { name: 'Reuters Business', url: rss('https://news.google.com/rss/search?q=site:reuters.com+business+markets&hl=en-US&gl=US&ceid=US:en') },
+  ],
+  // レイオフ
+  layoffs: [
+    { name: 'Layoffs.fyi', url: rss('https://layoffs.fyi/feed/') },
+    { name: 'Layoffs News', url: rss('https://news.google.com/rss/search?q=(layoffs+OR+"job+cuts"+OR+"workforce+reduction")+when:3d&hl=en-US&gl=US&ceid=US:en') },
+  ],
 };
 
 // ============================================
