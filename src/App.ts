@@ -1784,6 +1784,12 @@ export class App {
       <div class="header">
         <div class="header-left">
           <div class="variant-switcher">
+            ${SITE_VARIANT === 'japan' ? `
+            <a href="#" class="variant-option active" data-variant="japan" title="日本情勢">
+              <span class="variant-icon">🗾</span>
+              <span class="variant-label">日本情勢</span>
+            </a>
+            ` : `
             <a href="${this.isDesktopApp ? '#' : (SITE_VARIANT === 'full' ? '#' : 'https://worldmonitor.app')}"
                class="variant-option ${SITE_VARIANT === 'full' ? 'active' : ''}"
                data-variant="full"
@@ -1810,8 +1816,10 @@ export class App {
               <span class="variant-icon">📈</span>
               <span class="variant-label">${t('header.finance')}</span>
             </a>
+            `}
           </div>
-          <span class="logo">MONITOR</span><span class="version">v${__APP_VERSION__}</span>${BETA_MODE ? '<span class="beta-badge">BETA</span>' : ''}
+          <span class="logo">${SITE_VARIANT === 'japan' ? '日本情勢' : 'MONITOR'}</span><span class="version">v${__APP_VERSION__}</span>${BETA_MODE ? '<span class="beta-badge">BETA</span>' : ''}
+          ${SITE_VARIANT !== 'japan' ? `
           <a href="https://x.com/eliehabib" target="_blank" rel="noopener" class="credit-link">
             <svg class="x-logo" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
             <span class="credit-text">@eliehabib</span>
@@ -1819,6 +1827,7 @@ export class App {
           <a href="https://github.com/koala73/worldmonitor" target="_blank" rel="noopener" class="github-link" title="${t('header.viewOnGitHub')}">
             <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
           </a>
+          ` : ''}
           <div class="status-indicator">
             <span class="status-dot"></span>
             <span>${t('header.live')}</span>
@@ -1830,6 +1839,7 @@ export class App {
               <option value="mena">${t('components.deckgl.views.mena')}</option>
               <option value="eu">${t('components.deckgl.views.europe')}</option>
               <option value="asia">${t('components.deckgl.views.asia')}</option>
+              <option value="japan">日本</option>
               <option value="latam">${t('components.deckgl.views.latam')}</option>
               <option value="africa">${t('components.deckgl.views.africa')}</option>
               <option value="oceania">${t('components.deckgl.views.oceania')}</option>
@@ -1853,7 +1863,7 @@ export class App {
         <div class="map-section" id="mapSection">
           <div class="panel-header">
             <div class="panel-header-left">
-              <span class="panel-title">${SITE_VARIANT === 'tech' ? t('panels.techMap') : t('panels.map')}</span>
+              <span class="panel-title">${SITE_VARIANT === 'japan' ? '日本情勢マップ' : SITE_VARIANT === 'tech' ? t('panels.techMap') : t('panels.map')}</span>
             </div>
             <span class="header-clock" id="headerClock"></span>
             <button class="map-pin-btn" id="mapPinBtn" title="${t('header.pinMap')}">
@@ -2038,10 +2048,13 @@ export class App {
     // Default to MENA view on mobile for better focus
     // Uses deck.gl (WebGL) on desktop, falls back to D3/SVG on mobile
     const mapContainer = document.getElementById('mapContainer') as HTMLElement;
+    const defaultView = SITE_VARIANT === 'japan'
+      ? 'japan'
+      : this.isMobile ? 'mena' : 'global';
     this.map = new MapContainer(mapContainer, {
       zoom: this.isMobile ? 2.5 : 1.0,
-      pan: { x: 0, y: 0 },  // Centered view to show full world
-      view: this.isMobile ? 'mena' : 'global',
+      pan: { x: 0, y: 0 },
+      view: defaultView,
       layers: this.mapLayers,
       timeRange: '7d',
     });
@@ -3162,7 +3175,9 @@ export class App {
       let matches = 0;
       for (const keyword of keywords) {
         const cleaned = keyword.trim().toLowerCase();
-        if (cleaned.length >= 3 && titleLower.includes(cleaned)) {
+        // CJK characters are meaningful at 2 chars; Latin needs 3+
+        const minLen = /[\u3000-\u9fff\uf900-\ufaff]/.test(cleaned) ? 2 : 3;
+        if (cleaned.length >= minLen && titleLower.includes(cleaned)) {
           matches++;
         }
       }
@@ -3419,8 +3434,10 @@ export class App {
 
     this.allNews = collectedNews;
     this.initialLoadComplete = true;
-    maybeShowDownloadBanner();
-    mountCommunityWidget();
+    if (SITE_VARIANT !== 'japan' && SITE_VARIANT !== 'fgc') {
+      maybeShowDownloadBanner();
+      mountCommunityWidget();
+    }
     // Temporal baseline: report news volume
     updateAndCheck([
       { type: 'news', region: 'global', count: collectedNews.length },

@@ -182,6 +182,26 @@ const ALLOWED_DOMAINS = [
   'seekingalpha.com',
   'www.coindesk.com',
   'cointelegraph.com',
+  // Japan variant - Japanese media
+  'www.nhk.or.jp',
+  'www3.nhk.or.jp',
+  'www.asahi.com',
+  'mainichi.jp',
+  'www.sankei.com',
+  'www.47news.jp',
+  'rss.itmedia.co.jp',
+  'www.watch.impress.co.jp',
+  'gigazine.net',
+  'japan.cnet.com',
+  'jp.techcrunch.com',
+  'www.publickey1.jp',
+  'b.hatena.ne.jp',
+  'toyokeizai.net',
+  'number.bunshun.jp',
+  'www.oricon.co.jp',
+  'api.p2pquake.net',
+  // FGC variant
+  'www.eventhubs.com',
 ];
 
 export default async function handler(req) {

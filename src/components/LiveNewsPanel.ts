@@ -71,7 +71,19 @@ const TECH_LIVE_CHANNELS: LiveChannel[] = [
   { id: 'nasa', name: 'NASA TV', handle: '@NASA', fallbackVideoId: 'fO9e9jnhYK8', useFallbackOnly: true },
 ];
 
-const LIVE_CHANNELS = SITE_VARIANT === 'tech' ? TECH_LIVE_CHANNELS : FULL_LIVE_CHANNELS;
+// Japan variant: Japanese TV news live streams
+const JAPAN_LIVE_CHANNELS: LiveChannel[] = [
+  { id: 'tbs', name: 'TBS NEWS DIG', handle: '@tbsnewsdig' },
+  { id: 'ann', name: 'ANNニュース', handle: '@ANNnewsCH' },
+  { id: 'fnn', name: 'FNNプライムオンライン', handle: '@FNNnewsCH' },
+  { id: 'ntv', name: '日テレNEWS', handle: '@ntv_news' },
+  { id: 'txbiz', name: 'テレ東BIZ', handle: '@tvtokyobiz' },
+  { id: 'abc', name: 'ABCニュース', handle: '@ABCTVnews' },
+];
+
+const LIVE_CHANNELS = SITE_VARIANT === 'japan' ? JAPAN_LIVE_CHANNELS
+  : SITE_VARIANT === 'tech' ? TECH_LIVE_CHANNELS
+  : FULL_LIVE_CHANNELS;
 
 export class LiveNewsPanel extends Panel {
   private static apiPromise: Promise<void> | null = null;

@@ -71,6 +71,37 @@ const GEO_HUBS: GeoHubLocation[] = [
   { id: 'un-nyc', name: 'United Nations', region: 'North America', country: 'USA', lat: 40.7489, lon: -73.9680, type: 'organization', tier: 'critical', keywords: ['united nations', 'un', 'security council', 'general assembly', 'unsc'] },
   { id: 'nato-hq', name: 'NATO HQ', region: 'Europe', country: 'Belgium', lat: 50.8796, lon: 4.4284, type: 'organization', tier: 'critical', keywords: ['nato', 'north atlantic', 'alliance', 'stoltenberg'] },
   { id: 'iaea-vienna', name: 'IAEA', region: 'Europe', country: 'Austria', lat: 48.2352, lon: 16.4156, type: 'organization', tier: 'major', keywords: ['iaea', 'atomic energy', 'nuclear watchdog', 'grossi'] },
+
+  // Japan - Prefectures & Major Cities (for japan variant geo-matching)
+  { id: 'hokkaido', name: 'Hokkaido', region: 'Asia', country: 'Japan', lat: 43.0646, lon: 141.3468, type: 'capital', tier: 'notable', keywords: ['北海道', '札幌', 'sapporo', 'hokkaido'] },
+  { id: 'aomori', name: 'Aomori', region: 'Asia', country: 'Japan', lat: 40.8244, lon: 140.7400, type: 'capital', tier: 'notable', keywords: ['青森', 'aomori'] },
+  { id: 'iwate', name: 'Iwate', region: 'Asia', country: 'Japan', lat: 39.7036, lon: 141.1527, type: 'capital', tier: 'notable', keywords: ['岩手', '盛岡', 'iwate'] },
+  { id: 'miyagi', name: 'Miyagi', region: 'Asia', country: 'Japan', lat: 38.2688, lon: 140.8721, type: 'capital', tier: 'notable', keywords: ['宮城', '仙台', 'sendai', 'miyagi'] },
+  { id: 'akita', name: 'Akita', region: 'Asia', country: 'Japan', lat: 39.7200, lon: 140.1023, type: 'capital', tier: 'notable', keywords: ['秋田', 'akita'] },
+  { id: 'yamagata', name: 'Yamagata', region: 'Asia', country: 'Japan', lat: 38.2405, lon: 140.3633, type: 'capital', tier: 'notable', keywords: ['山形', 'yamagata'] },
+  { id: 'fukushima', name: 'Fukushima', region: 'Asia', country: 'Japan', lat: 37.7500, lon: 140.4678, type: 'capital', tier: 'notable', keywords: ['福島', 'fukushima'] },
+  { id: 'ibaraki', name: 'Ibaraki', region: 'Asia', country: 'Japan', lat: 36.3418, lon: 140.4468, type: 'capital', tier: 'notable', keywords: ['茨城', 'ibaraki'] },
+  { id: 'tochigi', name: 'Tochigi', region: 'Asia', country: 'Japan', lat: 36.5657, lon: 139.8836, type: 'capital', tier: 'notable', keywords: ['栃木', '宇都宮', 'tochigi'] },
+  { id: 'gunma', name: 'Gunma', region: 'Asia', country: 'Japan', lat: 36.3912, lon: 139.0608, type: 'capital', tier: 'notable', keywords: ['群馬', 'gunma'] },
+  { id: 'saitama', name: 'Saitama', region: 'Asia', country: 'Japan', lat: 35.8617, lon: 139.6455, type: 'capital', tier: 'notable', keywords: ['埼玉', 'さいたま', 'saitama'] },
+  { id: 'chiba', name: 'Chiba', region: 'Asia', country: 'Japan', lat: 35.6050, lon: 140.1233, type: 'capital', tier: 'notable', keywords: ['千葉', 'chiba'] },
+  { id: 'tokyo-metro', name: 'Tokyo', region: 'Asia', country: 'Japan', lat: 35.6895, lon: 139.6917, type: 'capital', tier: 'major', keywords: ['東京', '新宿', '渋谷', '池袋', '品川', '秋葉原', '六本木', '銀座', '国会'] },
+  { id: 'kanagawa', name: 'Kanagawa', region: 'Asia', country: 'Japan', lat: 35.4478, lon: 139.6425, type: 'capital', tier: 'notable', keywords: ['神奈川', '横浜', '川崎', 'yokohama', 'kanagawa'] },
+  { id: 'niigata', name: 'Niigata', region: 'Asia', country: 'Japan', lat: 37.9026, lon: 139.0236, type: 'capital', tier: 'notable', keywords: ['新潟', 'niigata'] },
+  { id: 'nagano', name: 'Nagano', region: 'Asia', country: 'Japan', lat: 36.6513, lon: 138.1810, type: 'capital', tier: 'notable', keywords: ['長野', 'nagano'] },
+  { id: 'shizuoka', name: 'Shizuoka', region: 'Asia', country: 'Japan', lat: 34.9769, lon: 138.3831, type: 'capital', tier: 'notable', keywords: ['静岡', 'shizuoka'] },
+  { id: 'aichi', name: 'Aichi', region: 'Asia', country: 'Japan', lat: 35.1802, lon: 136.9066, type: 'capital', tier: 'major', keywords: ['愛知', '名古屋', 'nagoya', 'aichi'] },
+  { id: 'kyoto-city', name: 'Kyoto', region: 'Asia', country: 'Japan', lat: 35.0116, lon: 135.7681, type: 'capital', tier: 'notable', keywords: ['京都', 'kyoto'] },
+  { id: 'osaka-city', name: 'Osaka', region: 'Asia', country: 'Japan', lat: 34.6937, lon: 135.5023, type: 'capital', tier: 'major', keywords: ['大阪', '関西', 'osaka', 'kansai'] },
+  { id: 'hyogo', name: 'Hyogo', region: 'Asia', country: 'Japan', lat: 34.6913, lon: 135.1830, type: 'capital', tier: 'notable', keywords: ['兵庫', '神戸', 'kobe', 'hyogo'] },
+  { id: 'nara', name: 'Nara', region: 'Asia', country: 'Japan', lat: 34.6851, lon: 135.8049, type: 'capital', tier: 'notable', keywords: ['奈良', 'nara'] },
+  { id: 'hiroshima-city', name: 'Hiroshima', region: 'Asia', country: 'Japan', lat: 34.3853, lon: 132.4553, type: 'capital', tier: 'notable', keywords: ['広島', 'hiroshima'] },
+  { id: 'okayama', name: 'Okayama', region: 'Asia', country: 'Japan', lat: 34.6618, lon: 133.9344, type: 'capital', tier: 'notable', keywords: ['岡山', 'okayama'] },
+  { id: 'fukuoka-city', name: 'Fukuoka', region: 'Asia', country: 'Japan', lat: 33.5904, lon: 130.4017, type: 'capital', tier: 'notable', keywords: ['福岡', '博多', 'fukuoka'] },
+  { id: 'kumamoto', name: 'Kumamoto', region: 'Asia', country: 'Japan', lat: 32.8032, lon: 130.7079, type: 'capital', tier: 'notable', keywords: ['熊本', 'kumamoto'] },
+  { id: 'nagasaki', name: 'Nagasaki', region: 'Asia', country: 'Japan', lat: 32.7503, lon: 129.8779, type: 'capital', tier: 'notable', keywords: ['長崎', 'nagasaki'] },
+  { id: 'kagoshima', name: 'Kagoshima', region: 'Asia', country: 'Japan', lat: 31.5602, lon: 130.5581, type: 'capital', tier: 'notable', keywords: ['鹿児島', '桜島', 'kagoshima'] },
+  { id: 'okinawa', name: 'Okinawa', region: 'Asia', country: 'Japan', lat: 26.3344, lon: 127.8056, type: 'strategic', tier: 'notable', keywords: ['沖縄', '那覇', '普天間', '辺野古', 'okinawa', 'naha'] },
 ];
 
 function buildGeoHubIndex(): GeoHubIndex {
@@ -115,8 +146,10 @@ export function inferGeoHubsFromTitle(title: string): GeoHubMatch[] {
   for (const [keyword, hubIds] of index.byKeyword) {
     if (keyword.length < 2) continue;
 
-    // Word boundary check for short keywords to avoid false positives
-    const regex = keyword.length < 5
+    // Word boundary check for short Latin keywords to avoid false positives.
+    // CJK characters don't have word boundaries, so always use includes() for them.
+    const isCJK = /[\u3000-\u9fff\uf900-\ufaff]/.test(keyword);
+    const regex = !isCJK && keyword.length < 5
       ? new RegExp(`\\b${keyword}\\b`, 'i')
       : null;
 

@@ -84,7 +84,7 @@ import { getAlertsNearLocation } from '@/services/geo-convergence';
 import { getCountriesGeoJson, getCountryAtCoordinates } from '@/services/country-geometry';
 
 export type TimeRange = '1h' | '6h' | '24h' | '48h' | '7d' | 'all';
-export type DeckMapView = 'global' | 'america' | 'mena' | 'eu' | 'asia' | 'latam' | 'africa' | 'oceania';
+export type DeckMapView = 'global' | 'america' | 'mena' | 'eu' | 'asia' | 'japan' | 'latam' | 'africa' | 'oceania';
 type MapInteractionMode = 'flat' | '3d';
 
 export interface CountryClickPayload {
@@ -126,6 +126,7 @@ const VIEW_PRESETS: Record<DeckMapView, { longitude: number; latitude: number; z
   mena: { longitude: 45, latitude: 28, zoom: 3.5 },
   eu: { longitude: 15, latitude: 50, zoom: 3.5 },
   asia: { longitude: 105, latitude: 35, zoom: 3 },
+  japan: { longitude: 137.5, latitude: 36.5, zoom: 3.8 },
   latam: { longitude: -60, latitude: -15, zoom: 3 },
   africa: { longitude: 20, latitude: 5, zoom: 3 },
   oceania: { longitude: 135, latitude: -25, zoom: 3.5 },
@@ -2667,6 +2668,7 @@ export class DeckGLMap {
           <option value="mena">${t('components.deckgl.views.mena')}</option>
           <option value="eu">${t('components.deckgl.views.europe')}</option>
           <option value="asia">${t('components.deckgl.views.asia')}</option>
+          <option value="japan">日本</option>
           <option value="latam">${t('components.deckgl.views.latam')}</option>
           <option value="africa">${t('components.deckgl.views.africa')}</option>
           <option value="oceania">${t('components.deckgl.views.oceania')}</option>
@@ -3157,7 +3159,7 @@ export class DeckGLMap {
   }
 
   private resetView(): void {
-    this.setView('global');
+    this.setView(SITE_VARIANT === 'japan' ? 'japan' : 'global');
   }
 
   private createUcdpEventsLayer(events: UcdpGeoEvent[]): ScatterplotLayer<UcdpGeoEvent> {

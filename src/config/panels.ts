@@ -368,11 +368,152 @@ const FINANCE_MOBILE_MAP_LAYERS: MapLayers = {
 };
 
 // ============================================
+// JAPAN VARIANT (Japan News & Disaster)
+// ============================================
+const JAPAN_PANELS: Record<string, PanelConfig> = {
+  map: { name: '日本マップ', enabled: true, priority: 1 },
+  'live-news': { name: '速報ニュース', enabled: true, priority: 1 },
+  insights: { name: 'AIサマリー', enabled: true, priority: 1 },
+  national: { name: '全国ニュース', enabled: true, priority: 1 },
+  disaster: { name: '災害・防災', enabled: true, priority: 1 },
+  politics: { name: '政治', enabled: true, priority: 1 },
+  business: { name: '経済・ビジネス', enabled: true, priority: 1 },
+  tech: { name: 'テクノロジー', enabled: true, priority: 1 },
+  sports: { name: 'スポーツ', enabled: true, priority: 2 },
+  entertainment: { name: 'エンタメ', enabled: true, priority: 2 },
+  regional_north: { name: '北海道・東北', enabled: true, priority: 2 },
+  regional_kanto: { name: '関東', enabled: true, priority: 2 },
+  regional_central: { name: '中部・関西', enabled: true, priority: 2 },
+  regional_west: { name: '中国・四国・九州・沖縄', enabled: true, priority: 2 },
+  international: { name: '国際', enabled: true, priority: 2 },
+  markets: { name: 'マーケット', enabled: true, priority: 2 },
+  monitors: { name: 'マイモニター', enabled: true, priority: 2 },
+};
+
+const JAPAN_MAP_LAYERS: MapLayers = {
+  conflicts: false,
+  bases: false,
+  cables: false,
+  pipelines: false,
+  hotspots: false,
+  ais: false,
+  nuclear: true,
+  irradiators: false,
+  sanctions: false,
+  weather: true,
+  economic: true,
+  waterways: false,
+  outages: true,
+  cyberThreats: false,
+  datacenters: false,
+  protests: false,
+  flights: false,
+  military: false,
+  natural: true,
+  spaceports: false,
+  minerals: false,
+  fires: false,
+  ucdpEvents: false,
+  displacement: false,
+  climate: true,
+  startupHubs: false,
+  cloudRegions: false,
+  accelerators: false,
+  techHQs: false,
+  techEvents: false,
+  stockExchanges: false,
+  financialCenters: false,
+  centralBanks: false,
+  commodityHubs: false,
+  gulfInvestments: false,
+};
+
+const JAPAN_MOBILE_MAP_LAYERS: MapLayers = {
+  conflicts: false,
+  bases: false,
+  cables: false,
+  pipelines: false,
+  hotspots: false,
+  ais: false,
+  nuclear: false,
+  irradiators: false,
+  sanctions: false,
+  weather: true,
+  economic: false,
+  waterways: false,
+  outages: true,
+  cyberThreats: false,
+  datacenters: false,
+  protests: false,
+  flights: false,
+  military: false,
+  natural: true,
+  spaceports: false,
+  minerals: false,
+  fires: false,
+  ucdpEvents: false,
+  displacement: false,
+  climate: false,
+  startupHubs: false,
+  cloudRegions: false,
+  accelerators: false,
+  techHQs: false,
+  techEvents: false,
+  stockExchanges: false,
+  financialCenters: false,
+  centralBanks: false,
+  commodityHubs: false,
+  gulfInvestments: false,
+};
+
+// ============================================
+// FGC VARIANT (Fighting Game Community)
+// ============================================
+const FGC_PANELS: Record<string, PanelConfig> = {
+  map: { name: 'FGC World Map', enabled: true, priority: 1 },
+  'live-news': { name: 'FGC News', enabled: true, priority: 1 },
+  insights: { name: 'AI FGC Insights', enabled: true, priority: 1 },
+  streams: { name: 'Live Streams', enabled: true, priority: 1 },
+  tournaments: { name: 'Tournaments', enabled: true, priority: 1 },
+  results: { name: 'Tournament Results', enabled: true, priority: 1 },
+  rankings: { name: 'CPT Rankings', enabled: true, priority: 1 },
+  clips: { name: 'Highlights', enabled: true, priority: 2 },
+  tech: { name: 'Character Tech', enabled: true, priority: 2 },
+  'fgc-community': { name: 'Community', enabled: true, priority: 2 },
+  monitors: { name: 'My Monitors', enabled: true, priority: 2 },
+};
+
+const FGC_MAP_LAYERS: MapLayers = {
+  conflicts: false, bases: false, cables: false, pipelines: false,
+  hotspots: false, ais: false, nuclear: false, irradiators: false,
+  sanctions: false, weather: false, economic: false, waterways: false,
+  outages: false, cyberThreats: false, datacenters: false, protests: false,
+  flights: false, military: false, natural: false, spaceports: false,
+  minerals: false, fires: false, ucdpEvents: false, displacement: false,
+  climate: false, startupHubs: false, cloudRegions: false, accelerators: false,
+  techHQs: false, techEvents: false, stockExchanges: false,
+  financialCenters: false, centralBanks: false, commodityHubs: false,
+  gulfInvestments: false,
+};
+
+const FGC_MOBILE_MAP_LAYERS: MapLayers = { ...FGC_MAP_LAYERS };
+
+// ============================================
 // VARIANT-AWARE EXPORTS
 // ============================================
-export const DEFAULT_PANELS = SITE_VARIANT === 'tech' ? TECH_PANELS : SITE_VARIANT === 'finance' ? FINANCE_PANELS : FULL_PANELS;
-export const DEFAULT_MAP_LAYERS = SITE_VARIANT === 'tech' ? TECH_MAP_LAYERS : SITE_VARIANT === 'finance' ? FINANCE_MAP_LAYERS : FULL_MAP_LAYERS;
-export const MOBILE_DEFAULT_MAP_LAYERS = SITE_VARIANT === 'tech' ? TECH_MOBILE_MAP_LAYERS : SITE_VARIANT === 'finance' ? FINANCE_MOBILE_MAP_LAYERS : FULL_MOBILE_MAP_LAYERS;
+function selectVariant<T>(tech: T, finance: T, japan: T, fgc: T, full: T): T {
+  switch (SITE_VARIANT) {
+    case 'tech': return tech;
+    case 'finance': return finance;
+    case 'japan': return japan;
+    case 'fgc': return fgc;
+    default: return full;
+  }
+}
+
+export const DEFAULT_PANELS = selectVariant(TECH_PANELS, FINANCE_PANELS, JAPAN_PANELS, FGC_PANELS, FULL_PANELS);
+export const DEFAULT_MAP_LAYERS = selectVariant(TECH_MAP_LAYERS, FINANCE_MAP_LAYERS, JAPAN_MAP_LAYERS, FGC_MAP_LAYERS, FULL_MAP_LAYERS);
+export const MOBILE_DEFAULT_MAP_LAYERS = selectVariant(TECH_MOBILE_MAP_LAYERS, FINANCE_MOBILE_MAP_LAYERS, JAPAN_MOBILE_MAP_LAYERS, FGC_MOBILE_MAP_LAYERS, FULL_MOBILE_MAP_LAYERS);
 
 // Monitor palette — fixed category colors persisted to localStorage (not theme-dependent)
 export const MONITOR_COLORS = [

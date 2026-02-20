@@ -890,8 +890,136 @@ const FINANCE_FEEDS: Record<string, Feed[]> = {
   ],
 };
 
+// ============================================
+// JAPAN VARIANT FEEDS
+// ============================================
+const JAPAN_FEEDS: Record<string, Feed[]> = {
+  // 全国紙・通信社
+  national: [
+    { name: 'NHK 主要ニュース', url: rss('https://www.nhk.or.jp/rss/news/cat0.xml') },
+    { name: 'NHK 社会', url: rss('https://www.nhk.or.jp/rss/news/cat1.xml') },
+    { name: 'NHK 科学・医療', url: rss('https://www.nhk.or.jp/rss/news/cat3.xml') },
+    { name: 'NHK 政治', url: rss('https://www.nhk.or.jp/rss/news/cat4.xml') },
+    { name: 'NHK 経済', url: rss('https://www.nhk.or.jp/rss/news/cat5.xml') },
+    { name: 'NHK 国際', url: rss('https://www.nhk.or.jp/rss/news/cat6.xml') },
+    { name: 'NHK スポーツ', url: rss('https://www.nhk.or.jp/rss/news/cat7.xml') },
+    { name: '朝日新聞', url: rss('https://www.asahi.com/rss/asahi/newsheadlines.rdf') },
+    { name: '毎日新聞', url: rss('https://mainichi.jp/rss/etc/mainichi-flash.rss') },
+    { name: '産経新聞', url: rss('https://www.sankei.com/rss/flash.xml') },
+    { name: '共同通信', url: rss('https://www.47news.jp/rss/national_summary.xml') },
+    { name: '時事通信', url: rss('https://news.google.com/rss/search?q=site:jiji.com+when:1d&hl=ja&gl=JP&ceid=JP:ja') },
+  ],
+  // 経済・ビジネス
+  business: [
+    { name: '日経新聞', url: rss('https://news.google.com/rss/search?q=site:nikkei.com+when:1d&hl=ja&gl=JP&ceid=JP:ja') },
+    { name: '東洋経済', url: rss('https://toyokeizai.net/list/feed/rss') },
+    { name: 'ダイヤモンド', url: rss('https://news.google.com/rss/search?q=site:diamond.jp+when:2d&hl=ja&gl=JP&ceid=JP:ja') },
+    { name: 'Bloomberg Japan', url: rss('https://news.google.com/rss/search?q=site:bloomberg.co.jp+when:1d&hl=ja&gl=JP&ceid=JP:ja') },
+    { name: 'ロイター日本語', url: rss('https://news.google.com/rss/search?q=site:jp.reuters.com+when:1d&hl=ja&gl=JP&ceid=JP:ja') },
+  ],
+  // テクノロジー
+  tech: [
+    { name: 'ITmedia', url: rss('https://rss.itmedia.co.jp/rss/2.0/itmedia_all.xml') },
+    { name: 'Impress Watch', url: rss('https://www.watch.impress.co.jp/data/rss/1.0/ipw/feed.rdf') },
+    { name: 'GIGAZINE', url: rss('https://gigazine.net/news/rss_2.0/') },
+    { name: 'CNET Japan', url: rss('https://japan.cnet.com/rss/index.rdf') },
+    { name: 'TechCrunch Japan', url: rss('https://jp.techcrunch.com/feed/') },
+    { name: 'Publickey', url: rss('https://www.publickey1.jp/atom.xml') },
+    { name: 'はてなテクノロジー', url: rss('https://b.hatena.ne.jp/hotentry/it.rss') },
+  ],
+  // 政治・行政
+  politics: [
+    { name: '国会ニュース', url: rss('https://news.google.com/rss/search?q=国会+OR+衆議院+OR+参議院+when:2d&hl=ja&gl=JP&ceid=JP:ja') },
+    { name: '政治ニュース', url: rss('https://news.google.com/rss/search?q=政治+選挙+OR+内閣+when:1d&hl=ja&gl=JP&ceid=JP:ja') },
+  ],
+  // 災害・防災
+  disaster: [
+    { name: '地震速報', url: rss('https://news.google.com/rss/search?q=地震+震度+OR+津波+when:2d&hl=ja&gl=JP&ceid=JP:ja') },
+    { name: '気象警報', url: rss('https://news.google.com/rss/search?q=気象庁+警報+OR+注意報+OR+台風+when:2d&hl=ja&gl=JP&ceid=JP:ja') },
+    { name: '防災情報', url: rss('https://news.google.com/rss/search?q=避難+OR+防災+OR+災害+when:2d&hl=ja&gl=JP&ceid=JP:ja') },
+  ],
+  // スポーツ
+  sports: [
+    { name: 'スポーツニュース', url: rss('https://news.google.com/rss/topics/CAAqJggKIiBDQkFTRWdvSUwyMHZNRFp1ZEdvU0FtcGhHZ0pLVUNnQVAB?hl=ja&gl=JP&ceid=JP:ja') },
+    { name: 'Number Web', url: rss('https://number.bunshun.jp/list/feed/rss') },
+  ],
+  // エンタメ
+  entertainment: [
+    { name: 'エンタメニュース', url: rss('https://news.google.com/rss/topics/CAAqJggKIiBDQkFTRWdvSUwyMHZNREpxYW5RU0FtcGhHZ0pLVUNnQVAB?hl=ja&gl=JP&ceid=JP:ja') },
+    { name: 'ORICON NEWS', url: rss('https://www.oricon.co.jp/rss/news/') },
+  ],
+  // 地方ニュース - 北海道・東北
+  regional_north: [
+    { name: '北海道新聞', url: rss('https://news.google.com/rss/search?q=site:hokkaido-np.co.jp+when:2d&hl=ja&gl=JP&ceid=JP:ja') },
+    { name: '河北新報', url: rss('https://news.google.com/rss/search?q=site:kahoku.news+when:2d&hl=ja&gl=JP&ceid=JP:ja') },
+  ],
+  // 地方ニュース - 関東
+  regional_kanto: [
+    { name: '東京新聞', url: rss('https://news.google.com/rss/search?q=site:tokyo-np.co.jp+when:2d&hl=ja&gl=JP&ceid=JP:ja') },
+    { name: '神奈川新聞', url: rss('https://news.google.com/rss/search?q=site:kanaloco.jp+when:2d&hl=ja&gl=JP&ceid=JP:ja') },
+  ],
+  // 地方ニュース - 中部・関西
+  regional_central: [
+    { name: '中日新聞', url: rss('https://news.google.com/rss/search?q=site:chunichi.co.jp+when:2d&hl=ja&gl=JP&ceid=JP:ja') },
+    { name: '神戸新聞', url: rss('https://news.google.com/rss/search?q=site:kobe-np.co.jp+when:2d&hl=ja&gl=JP&ceid=JP:ja') },
+    { name: '京都新聞', url: rss('https://news.google.com/rss/search?q=site:kyoto-np.co.jp+when:2d&hl=ja&gl=JP&ceid=JP:ja') },
+  ],
+  // 地方ニュース - 中国・四国・九州
+  regional_west: [
+    { name: '西日本新聞', url: rss('https://news.google.com/rss/search?q=site:nishinippon.co.jp+when:2d&hl=ja&gl=JP&ceid=JP:ja') },
+    { name: '琉球新報', url: rss('https://news.google.com/rss/search?q=site:ryukyushimpo.jp+when:2d&hl=ja&gl=JP&ceid=JP:ja') },
+    { name: '沖縄タイムス', url: rss('https://news.google.com/rss/search?q=site:okinawatimes.co.jp+when:2d&hl=ja&gl=JP&ceid=JP:ja') },
+  ],
+  // 国際（日本語）
+  international: [
+    { name: 'NHK 国際', url: rss('https://www.nhk.or.jp/rss/news/cat6.xml') },
+    { name: 'BBC Japan', url: rss('https://news.google.com/rss/search?q=site:bbc.com/japanese+when:2d&hl=ja&gl=JP&ceid=JP:ja') },
+    { name: 'CNN Japan', url: rss('https://news.google.com/rss/search?q=site:cnn.co.jp+when:2d&hl=ja&gl=JP&ceid=JP:ja') },
+  ],
+  // マーケット
+  markets: [
+    { name: '日経マーケット', url: rss('https://news.google.com/rss/search?q=日経平均+OR+TOPIX+OR+為替+OR+株式市場+when:1d&hl=ja&gl=JP&ceid=JP:ja') },
+    { name: '仮想通貨', url: rss('https://news.google.com/rss/search?q=ビットコイン+OR+仮想通貨+OR+暗号資産+when:2d&hl=ja&gl=JP&ceid=JP:ja') },
+  ],
+};
+
+// ============================================
+// FGC VARIANT FEEDS
+// ============================================
+const FGC_FEEDS: Record<string, Feed[]> = {
+  // FGC News
+  streams: [
+    { name: 'FGC News', url: rss('https://news.google.com/rss/search?q="Street+Fighter+6"+OR+"fighting+game"+OR+FGC+OR+"Capcom+Pro+Tour"+when:3d&hl=en-US&gl=US&ceid=US:en') },
+    { name: 'EventHubs', url: rss('https://www.eventhubs.com/rss/') },
+    { name: 'Capcom News', url: rss('https://news.google.com/rss/search?q=site:capcom.com+OR+"Capcom"+fighting+game+when:7d&hl=en-US&gl=US&ceid=US:en') },
+  ],
+  tournaments: [
+    { name: 'CPT News', url: rss('https://news.google.com/rss/search?q="Capcom+Pro+Tour"+OR+"Capcom+Cup"+OR+CPT+2026+when:7d&hl=en-US&gl=US&ceid=US:en') },
+    { name: 'EVO News', url: rss('https://news.google.com/rss/search?q=EVO+2026+OR+"Evolution+Championship"+fighting+when:14d&hl=en-US&gl=US&ceid=US:en') },
+    { name: 'Tournament Results', url: rss('https://news.google.com/rss/search?q=("Street+Fighter+6"+OR+SF6)+(tournament+OR+results+OR+winner+OR+champion)+when:7d&hl=en-US&gl=US&ceid=US:en') },
+  ],
+  tech: [
+    { name: 'SF6 Updates', url: rss('https://news.google.com/rss/search?q="Street+Fighter+6"+(patch+OR+update+OR+DLC+OR+character+OR+balance)+when:14d&hl=en-US&gl=US&ceid=US:en') },
+    { name: 'Fighting Games', url: rss('https://news.google.com/rss/search?q="Tekken+8"+OR+"Guilty+Gear"+OR+"Mortal+Kombat"+fighting+game+when:7d&hl=en-US&gl=US&ceid=US:en') },
+  ],
+  'fgc-community': [
+    { name: 'FGC Community', url: rss('https://news.google.com/rss/search?q=FGC+community+OR+"fighting+game+community"+when:7d&hl=en-US&gl=US&ceid=US:en') },
+    { name: 'FGC Japan', url: rss('https://news.google.com/rss/search?q=格ゲー+OR+ストリートファイター6+OR+スト6+when:3d&hl=ja&gl=JP&ceid=JP:ja') },
+  ],
+};
+
 // Variant-aware exports
-export const FEEDS = SITE_VARIANT === 'tech' ? TECH_FEEDS : SITE_VARIANT === 'finance' ? FINANCE_FEEDS : FULL_FEEDS;
+function selectFeeds(tech: Record<string, Feed[]>, finance: Record<string, Feed[]>, japan: Record<string, Feed[]>, fgc: Record<string, Feed[]>, full: Record<string, Feed[]>): Record<string, Feed[]> {
+  switch (SITE_VARIANT) {
+    case 'tech': return tech;
+    case 'finance': return finance;
+    case 'japan': return japan;
+    case 'fgc': return fgc;
+    default: return full;
+  }
+}
+
+export const FEEDS = selectFeeds(TECH_FEEDS, FINANCE_FEEDS, JAPAN_FEEDS, FGC_FEEDS, FULL_FEEDS);
 
 export const INTEL_SOURCES: Feed[] = [
   // Defense & Security (Tier 1)

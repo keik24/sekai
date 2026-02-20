@@ -90,6 +90,48 @@ const VARIANT_META: Record<string, {
       'Market radar signals',
     ],
   },
+  japan: {
+    title: '日本情勢 - リアルタイム日本ニュースダッシュボード',
+    description: 'リアルタイムで日本全国のニュース、災害情報、経済データを一元監視。地震速報、気象警報、地方ニュースを地図と連動して表示。',
+    keywords: '日本情勢, japan news, 日本ニュース, 地震速報, 災害情報, 気象警報, 日本経済, 株式市場, 日経平均, 防災, NHK, 朝日新聞, 読売新聞, リアルタイムニュース, 地方ニュース',
+    url: 'https://japan.worldmonitor.app/',
+    siteName: '日本情勢',
+    shortName: '日本情勢',
+    subject: '日本のニュース・災害・経済のリアルタイム監視',
+    classification: 'ニュースダッシュボード, 災害モニター, 日本情勢',
+    categories: ['news', 'weather'],
+    features: [
+      'リアルタイム日本ニュース集約',
+      '地震速報（気象庁連携）',
+      '気象警報モニタリング',
+      '地方別ニュース',
+      '日経平均・マーケット追跡',
+      '災害・避難情報アラート',
+      'AI要約',
+      '日本地図連動',
+    ],
+  },
+  fgc: {
+    title: 'FGC Monitor - Fighting Game Community Live Dashboard',
+    description: 'Real-time FGC dashboard tracking Street Fighter 6 pro player streams, tournament schedules, match results, and community news worldwide.',
+    keywords: 'FGC, fighting games, Street Fighter 6, SF6, Twitch streams, pro players, EVO, Capcom Pro Tour, CPT, tournament brackets, fighting game community, esports, live streams',
+    url: 'https://fgc.worldmonitor.app/',
+    siteName: 'FGC Monitor',
+    shortName: 'FGCMonitor',
+    subject: 'Fighting Game Community Streams, Tournaments, and News',
+    classification: 'Esports Dashboard, Stream Tracker, FGC Intelligence',
+    categories: ['entertainment', 'games'],
+    features: [
+      'Live stream tracking (Twitch/YouTube)',
+      'Pro player database (50+ players)',
+      'Tournament schedule & results',
+      'Character usage & meta tracking',
+      'FGC news aggregation',
+      'Interactive world map with player locations',
+      'AI-powered FGC news summary',
+      'CPT ranking tracker',
+    ],
+  },
 };
 
 const activeVariant = process.env.VITE_VARIANT || 'full';
@@ -120,6 +162,57 @@ function htmlVariantPlugin(): Plugin {
         .replace(/"url": "https:\/\/worldmonitor\.app\/"/, `"url": "${activeMeta.url}"`)
         .replace(/"description": "Real-time global intelligence dashboard with live news, markets, military tracking, infrastructure monitoring, and geopolitical data."/, `"description": "${activeMeta.description}"`)
         .replace(/"featureList": \[[\s\S]*?\]/, `"featureList": ${JSON.stringify(activeMeta.features, null, 8).replace(/\n/g, '\n      ')}`);
+    },
+  };
+}
+
+// Dev-only RSS proxy — mirrors api/rss-proxy.js so `rss()` URLs work with `vite dev`
+function rssProxyPlugin(): Plugin {
+  return {
+    name: 'rss-proxy-dev',
+    configureServer(server) {
+      server.middlewares.use(async (req, res, next) => {
+        if (!req.url?.startsWith('/api/rss-proxy')) return next();
+
+        const url = new URL(req.url, 'http://localhost');
+        const feedUrl = url.searchParams.get('url');
+
+        if (!feedUrl) {
+          res.statusCode = 400;
+          res.setHeader('Content-Type', 'application/json');
+          res.end(JSON.stringify({ error: 'Missing url parameter' }));
+          return;
+        }
+
+        try {
+          const controller = new AbortController();
+          const isGoogleNews = feedUrl.includes('news.google.com');
+          const timeout = isGoogleNews ? 20000 : 12000;
+          const timer = setTimeout(() => controller.abort(), timeout);
+
+          const resp = await fetch(feedUrl, {
+            headers: {
+              'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+              'Accept': 'application/rss+xml, application/xml, text/xml, */*',
+              'Accept-Language': 'en-US,en;q=0.9,ja;q=0.8',
+            },
+            signal: controller.signal,
+            redirect: 'follow',
+          });
+          clearTimeout(timer);
+
+          const data = await resp.text();
+          res.setHeader('Content-Type', 'application/xml');
+          res.setHeader('Cache-Control', 'public, max-age=300');
+          res.end(data);
+        } catch (error: unknown) {
+          const msg = error instanceof Error ? error.message : String(error);
+          console.error('[RSS Proxy Dev]', feedUrl, msg);
+          res.statusCode = 502;
+          res.setHeader('Content-Type', 'application/json');
+          res.end(JSON.stringify({ error: 'Failed to fetch feed', details: msg }));
+        }
+      });
     },
   };
 }
@@ -213,6 +306,7 @@ export default defineConfig({
   },
   plugins: [
     htmlVariantPlugin(),
+    rssProxyPlugin(),
     polymarketPlugin(),
     youtubeLivePlugin(),
     VitePWA({

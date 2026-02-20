@@ -53,7 +53,7 @@ import { getAlertsNearLocation } from '@/services/geo-convergence';
 import { t } from '@/services/i18n';
 
 export type TimeRange = '1h' | '6h' | '24h' | '48h' | '7d' | 'all';
-export type MapView = 'global' | 'america' | 'mena' | 'eu' | 'asia' | 'latam' | 'africa' | 'oceania';
+export type MapView = 'global' | 'america' | 'mena' | 'eu' | 'asia' | 'japan' | 'latam' | 'africa' | 'oceania';
 
 interface MapState {
   zoom: number;
@@ -188,6 +188,11 @@ export class MapComponent {
     this.dynamicLayerGroup = this.svg.append('g').attr('class', 'map-dynamic');
     this.popup = new MapPopup(container);
     this.initClusterRenderer();
+
+    // Apply view-specific zoom/pan if initial view is not global
+    if (initialState.view && initialState.view !== 'global') {
+      this.setView(initialState.view);
+    }
 
     this.setupZoomHandlers();
     this.loadMapData();
@@ -2865,6 +2870,7 @@ export class MapComponent {
       mena: { zoom: 3.5, pan: { x: -100, y: 50 } },
       eu: { zoom: 2.4, pan: { x: -30, y: 100 } },
       asia: { zoom: 2.0, pan: { x: -320, y: 40 } },
+      japan: { zoom: 3.5, pan: { x: -430, y: 80 } },
       latam: { zoom: 2.0, pan: { x: 120, y: -100 } },
       africa: { zoom: 2.2, pan: { x: -40, y: -30 } },
       oceania: { zoom: 2.2, pan: { x: -420, y: -100 } },
@@ -2959,14 +2965,8 @@ export class MapComponent {
   }
 
   public reset(): void {
-    this.state.zoom = 1;
-    this.state.pan = { x: 0, y: 0 };
-    if (this.state.view !== 'global') {
-      this.state.view = 'global';
-      this.render();
-    } else {
-      this.applyTransform();
-    }
+    const defaultView = SITE_VARIANT === 'japan' ? 'japan' : 'global';
+    this.setView(defaultView);
   }
 
   public triggerHotspotClick(id: string): void {
