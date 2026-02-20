@@ -163,9 +163,8 @@ function htmlVariantPlugin(): Plugin {
         .replace(/"description": "Real-time global intelligence dashboard with live news, markets, military tracking, infrastructure monitoring, and geopolitical data."/, `"description": "${activeMeta.description}"`)
         .replace(/"featureList": \[[\s\S]*?\]/, `"featureList": ${JSON.stringify(activeMeta.features, null, 8).replace(/\n/g, '\n      ')}`);
 
-      // Inject GA4 if VITE_GA4_ID or GA4_ID is set
-      const ga4Id = process.env.VITE_GA4_ID || process.env.GA4_ID;
-      console.log('[vite] GA4 ID:', ga4Id ? `${ga4Id.slice(0, 4)}...` : 'not set');
+      // Inject GA4 tracking
+      const ga4Id = process.env.VITE_GA4_ID || process.env.GA4_ID || (activeVariant === 'japan' ? 'G-X4EBEKV0J7' : '');
       if (ga4Id) {
         const ga4Script = `
     <!-- Google Analytics 4 -->
