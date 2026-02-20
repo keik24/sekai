@@ -387,7 +387,6 @@ const JAPAN_PANELS: Record<string, PanelConfig> = {
   entertainment: { name: 'エンタメ', enabled: true, priority: 2 },
   stablecoins: { name: 'ステーブルコイン', enabled: true, priority: 2 },
   // 世界の地域ニュース
-  world: { name: '世界のニュース', enabled: true, priority: 2 },
   middleeast: { name: '中東', enabled: true, priority: 2 },
   asia: { name: 'アジア太平洋', enabled: true, priority: 2 },
   africa: { name: 'アフリカ', enabled: true, priority: 2 },

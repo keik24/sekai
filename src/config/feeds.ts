@@ -976,16 +976,6 @@ const JAPAN_FEEDS: Record<string, Feed[]> = {
     { name: 'BBC Japan', url: rss('https://news.google.com/rss/search?q=site:bbc.com/japanese+when:2d&hl=ja&gl=JP&ceid=JP:ja') },
     { name: 'CNN Japan', url: rss('https://news.google.com/rss/search?q=site:cnn.co.jp+when:2d&hl=ja&gl=JP&ceid=JP:ja') },
   ],
-  // 世界のニュース（英語ソース）
-  world: [
-    { name: 'BBC World', url: rss('https://feeds.bbci.co.uk/news/world/rss.xml') },
-    { name: 'Al Jazeera', url: rss('https://www.aljazeera.com/xml/rss/all.xml') },
-    { name: 'Guardian World', url: rss('https://www.theguardian.com/world/rss') },
-    { name: 'Reuters', url: rss('https://news.google.com/rss/search?q=site:reuters.com+world+when:1d&hl=en-US&gl=US&ceid=US:en') },
-    { name: 'AP News', url: rss('https://news.google.com/rss/search?q=site:apnews.com+world+when:1d&hl=en-US&gl=US&ceid=US:en') },
-    { name: 'CNN World', url: rss('http://rss.cnn.com/rss/cnn_world.rss') },
-    { name: 'NPR World', url: rss('https://feeds.npr.org/1004/rss.xml') },
-  ],
   // GitHub Trending
   github: [
     { name: 'GitHub Trending', url: rss('https://mshibanami.github.io/GitHubTrendingRSS/daily/all.xml') },
