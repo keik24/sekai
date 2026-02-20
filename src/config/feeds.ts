@@ -984,6 +984,10 @@ const JAPAN_FEEDS: Record<string, Feed[]> = {
     { name: 'Al Jazeera', url: rss('https://www.aljazeera.com/xml/rss/all.xml') },
     { name: 'Guardian World', url: rss('https://www.theguardian.com/world/rss') },
   ],
+  // GitHub Trending
+  github: [
+    { name: 'GitHub Trending', url: rss('https://mshibanami.github.io/GitHubTrendingRSS/daily/all.xml') },
+  ],
   // マーケット
   markets: [
     { name: '日経マーケット', url: rss('https://news.google.com/rss/search?q=日経平均+OR+TOPIX+OR+為替+OR+株式市場+when:1d&hl=ja&gl=JP&ceid=JP:ja') },
