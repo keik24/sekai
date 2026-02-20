@@ -385,7 +385,8 @@ const JAPAN_PANELS: Record<string, PanelConfig> = {
   regional_kanto: { name: '関東', enabled: true, priority: 2 },
   regional_central: { name: '中部・関西', enabled: true, priority: 2 },
   regional_west: { name: '中国・四国・九州・沖縄', enabled: true, priority: 2 },
-  international: { name: '国際', enabled: true, priority: 2 },
+  international: { name: '国際（日本語）', enabled: true, priority: 2 },
+  world: { name: '世界のニュース', enabled: true, priority: 2 },
   markets: { name: 'マーケット', enabled: true, priority: 2 },
   monitors: { name: 'マイモニター', enabled: true, priority: 2 },
 };
