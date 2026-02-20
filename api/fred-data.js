@@ -1,5 +1,5 @@
 import { getCorsHeaders, isDisallowedOrigin } from './_cors.js';
-export const config = { runtime: 'edge', maxDuration: 30 };
+export const config = { runtime: 'edge', maxDuration: 30, preferredRegion: 'iad1' };
 
 export default async function handler(req) {
   const corsHeaders = getCorsHeaders(req, 'GET, OPTIONS');
