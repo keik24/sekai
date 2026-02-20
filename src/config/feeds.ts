@@ -978,11 +978,13 @@ const JAPAN_FEEDS: Record<string, Feed[]> = {
   ],
   // 世界のニュース（英語ソース）
   world: [
-    { name: 'Reuters', url: rss('https://feeds.reuters.com/reuters/worldNews') },
-    { name: 'AP News', url: rss('https://rsshub.app/apnews/topics/world-news') },
     { name: 'BBC World', url: rss('https://feeds.bbci.co.uk/news/world/rss.xml') },
     { name: 'Al Jazeera', url: rss('https://www.aljazeera.com/xml/rss/all.xml') },
     { name: 'Guardian World', url: rss('https://www.theguardian.com/world/rss') },
+    { name: 'Reuters', url: rss('https://news.google.com/rss/search?q=site:reuters.com+world+when:1d&hl=en-US&gl=US&ceid=US:en') },
+    { name: 'AP News', url: rss('https://news.google.com/rss/search?q=site:apnews.com+world+when:1d&hl=en-US&gl=US&ceid=US:en') },
+    { name: 'CNN World', url: rss('http://rss.cnn.com/rss/cnn_world.rss') },
+    { name: 'NPR World', url: rss('https://feeds.npr.org/1004/rss.xml') },
   ],
   // GitHub Trending
   github: [
