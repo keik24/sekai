@@ -141,7 +141,7 @@ function htmlVariantPlugin(): Plugin {
   return {
     name: 'html-variant',
     transformIndexHtml(html) {
-      return html
+      let result = html
         .replace(/<title>.*?<\/title>/, `<title>${activeMeta.title}</title>`)
         .replace(/<meta name="title" content=".*?" \/>/, `<meta name="title" content="${activeMeta.title}" />`)
         .replace(/<meta name="description" content=".*?" \/>/, `<meta name="description" content="${activeMeta.description}" />`)
@@ -162,6 +162,28 @@ function htmlVariantPlugin(): Plugin {
         .replace(/"url": "https:\/\/worldmonitor\.app\/"/, `"url": "${activeMeta.url}"`)
         .replace(/"description": "Real-time global intelligence dashboard with live news, markets, military tracking, infrastructure monitoring, and geopolitical data."/, `"description": "${activeMeta.description}"`)
         .replace(/"featureList": \[[\s\S]*?\]/, `"featureList": ${JSON.stringify(activeMeta.features, null, 8).replace(/\n/g, '\n      ')}`);
+
+      // Inject GA4 if VITE_GA4_ID is set
+      const ga4Id = process.env.VITE_GA4_ID;
+      if (ga4Id) {
+        const ga4Script = `
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=${ga4Id}"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${ga4Id}');</script>`;
+        result = result.replace('</head>', `${ga4Script}\n  </head>`);
+
+        // Add GA4 domains to CSP
+        result = result.replace(
+          /script-src 'self'/,
+          "script-src 'self' https://www.googletagmanager.com"
+        );
+        result = result.replace(
+          /connect-src 'self'/,
+          "connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://analytics.google.com"
+        );
+      }
+
+      return result;
     },
   };
 }
