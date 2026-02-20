@@ -91,9 +91,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/favico/apple-touch-icon.png" />
 
 
-    <!-- Google Analytics 4 -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-X4EBEKV0J7"></script>
-    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-X4EBEKV0J7');</script>
+    <!-- GA4: injected by vite.config.ts if VITE_GA4_ID is set -->
 
     <!-- Theme: apply stored preference before first paint to prevent FOUC -->
     <script>(function(){try{var t=localStorage.getItem('worldmonitor-theme');if(t==='light')document.documentElement.dataset.theme='light';}catch(e){}document.documentElement.classList.add('no-transition');})()</script>

@@ -163,6 +163,16 @@ function htmlVariantPlugin(): Plugin {
         .replace(/"description": "Real-time global intelligence dashboard with live news, markets, military tracking, infrastructure monitoring, and geopolitical data."/, `"description": "${activeMeta.description}"`)
         .replace(/"featureList": \[[\s\S]*?\]/, `"featureList": ${JSON.stringify(activeMeta.features, null, 8).replace(/\n/g, '\n      ')}`);
 
+      // Inject GA4 tracking if VITE_GA4_ID is set
+      const ga4Id = process.env.VITE_GA4_ID;
+      if (ga4Id) {
+        const ga4Script = `
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=${ga4Id}"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${ga4Id}');</script>`;
+        result = result.replace('<!-- GA4: injected by vite.config.ts if VITE_GA4_ID is set -->', ga4Script);
+      }
+
       return result;
     },
   };
