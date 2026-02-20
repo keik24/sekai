@@ -1,5 +1,5 @@
 import { getCorsHeaders, isDisallowedOrigin } from './_cors.js';
-export const config = { runtime: 'edge' };
+export const config = { runtime: 'edge', maxDuration: 30 };
 
 export default async function handler(req) {
   const corsHeaders = getCorsHeaders(req, 'GET, OPTIONS');
@@ -66,9 +66,13 @@ export default async function handler(req) {
     if (observationEnd) params.set('observation_end', observationEnd);
 
     const fredUrl = `https://api.stlouisfed.org/fred/series/observations?${params}`;
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 15000);
     const response = await fetch(fredUrl, {
       headers: { 'Accept': 'application/json' },
+      signal: controller.signal,
     });
+    clearTimeout(timeout);
 
     const data = await response.json();
 
