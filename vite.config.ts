@@ -163,26 +163,6 @@ function htmlVariantPlugin(): Plugin {
         .replace(/"description": "Real-time global intelligence dashboard with live news, markets, military tracking, infrastructure monitoring, and geopolitical data."/, `"description": "${activeMeta.description}"`)
         .replace(/"featureList": \[[\s\S]*?\]/, `"featureList": ${JSON.stringify(activeMeta.features, null, 8).replace(/\n/g, '\n      ')}`);
 
-      // Inject GA4 tracking
-      const ga4Id = process.env.VITE_GA4_ID || process.env.GA4_ID || (activeVariant === 'japan' ? 'G-X4EBEKV0J7' : '');
-      if (ga4Id) {
-        const ga4Script = `
-    <!-- Google Analytics 4 -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=${ga4Id}"></script>
-    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${ga4Id}');</script>`;
-        result = result.replace('</head>', `${ga4Script}\n  </head>`);
-
-        // Add GA4 domains to CSP
-        result = result.replace(
-          /script-src 'self'/,
-          "script-src 'self' https://www.googletagmanager.com"
-        );
-        result = result.replace(
-          /connect-src 'self'/,
-          "connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://analytics.google.com"
-        );
-      }
-
       return result;
     },
   };
