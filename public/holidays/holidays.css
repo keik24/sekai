@@ -274,6 +274,10 @@ h2.title { font-size: clamp(24px, 3.4vw, 30px); letter-spacing: -0.015em; line-h
 .hol-wrap { max-width: 860px; margin: 0 auto; padding: 24px 16px 56px; }
 .hol-wrap h1 { font-size: clamp(26px, 5vw, 38px); line-height: 1.25; margin: 10px 0 8px; }
 .hol-wrap .lead { color: var(--muted); margin: 0 0 20px; }
+.hol-wrap h2 { margin: 28px 0 8px; }
+.hol-wrap p { line-height: 1.8; }
+.head .brand { white-space: nowrap; }
+@media (max-width: 520px) { .head .brand { font-size: 20px; } }
 .hol-year { display: flex; align-items: baseline; gap: 12px; margin: 34px 0 10px; }
 .hol-year h2 { font-size: 26px; margin: 0; }
 .hol-year span { color: var(--muted); font-size: 14px; }
@@ -291,4 +295,14 @@ h2.title { font-size: clamp(24px, 3.4vw, 30px); letter-spacing: -0.015em; line-h
 .hol-cta .btns { display: flex; flex-wrap: wrap; gap: 8px; }
 .hol-countries { columns: 3 180px; column-gap: 18px; list-style: none; padding: 0; margin: 18px 0; }
 .hol-countries li { break-inside: avoid; padding: 5px 0; }
+.hol-today { margin: 0 0 18px; }
+.hol-today a { display: inline-block; font-weight: 700; padding: 10px 16px; border-radius: 99px; background: var(--c1-soft, #E0F2F1); color: #15171C; text-decoration: none; }
+.hol-months { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; margin: 10px 0 26px; }
+.hol-months a { display: inline-block; padding: 6px 12px; border: 1px solid var(--line, #E3E6EA); border-radius: 99px; text-decoration: none; font-size: 14px; }
+.hol-months a[aria-current] { font-weight: 700; border-color: currentColor; }
+.hol-day { margin: 0 0 6px; padding: 14px 0 0; font-size: 19px; border-top: 1px solid var(--line, #E3E6EA); scroll-margin-top: 12px; }
+.hol-day:target { background: var(--c1-soft, #E0F2F1); color: #15171C; padding: 10px 8px; border-radius: 8px; }
+.hol-in-day { list-style: none; margin: 0 0 14px; padding: 0; columns: 2 280px; column-gap: 24px; }
+.hol-in-day li { break-inside: avoid; padding: 4px 0; }
+.hol-in-day .n { color: var(--muted); font-size: 14px; margin-inline-start: 6px; }
 @media (max-width: 520px) { .hol-list li { grid-template-columns: 1fr; } .hol-list .d { grid-column: 1; } }
