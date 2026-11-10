@@ -47,7 +47,7 @@
 <meta property="og:title" content="У кого сегодня выходной? | Sekai">
 <meta property="og:description" content="Смотрите на карте мира, в каких странах сегодня праздничный выходной. Нажмите на страну, чтобы открыть её календарь праздников.">
 <meta property="og:url" content="https://sekai.net/index-ru.html">
-<meta name="theme-color" content="#070B14">
+<meta name="theme-color" content="#0A0A0A">
 <link rel="icon" href="/favico/favicon.ico">
 <link rel="stylesheet" href="/map/sekai.css">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "@id": "https://sekai.net/#site", "url": "https://sekai.net/index-ru.html", "name": "Sekai", "description": "Смотрите на карте мира, в каких странах сегодня праздничный выходной. Нажмите на страну, чтобы открыть её календарь праздников.", "inLanguage": "ru", "publisher": {"@type": "Organization", "name": "KeiK LLC", "url": "https://keik.co.jp"}}</script>
@@ -62,33 +62,40 @@ gtag('config', 'G-GTQW7RZ1VY');
 </head>
 <body>
 <header class="sk-head">
-<a class="sk-brand" href="/index-ru.html">Sekai<span>世界</span></a>
+<a class="sk-brand" href="/index-ru.html"><b>世界</b>sekai.net</a>
+<span class="sk-live"><i></i>LIVE</span>
 <nav><a href="/holidays/index-ru.html">Праздники по странам</a><a class="sk-lang" href="#languages"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.8 2.5 15.2 0 18M12 3c-2.5 2.8-2.5 15.2 0 18"/></svg>Русский</a></nav>
 </header>
 <main>
 <section class="sk-hero">
 <h1>У кого сегодня выходной?</h1>
 <p class="sk-lead">Смотрите на карте мира, в каких странах сегодня праздничный выходной. Нажмите на страну, чтобы открыть её календарь праздников.</p>
+</section>
+<section class="sk-panel sk-mapbox">
+<div class="sk-title"><span>SEKAI MAP</span><span class="sk-clock" id="sk-clock"></span></div>
+<div class="sk-stage">
+<div class="sk-map" id="sk-map" role="img" aria-label="У кого сегодня выходной?"></div>
 <div class="sk-bar">
 <button type="button" id="sk-prev" aria-label="−1">‹</button>
 <time id="sk-date" datetime="2026-11-11">Ср, 11 нояб.</time>
 <button type="button" id="sk-next" aria-label="+1">›</button>
 <button type="button" id="sk-now">Сегодня</button>
 </div>
+<div class="sk-zoom"><button type="button" id="sk-in" aria-label="+">+</button><button type="button" id="sk-out" aria-label="−">−</button><button type="button" id="sk-home" aria-label="⌂">⌂</button></div>
+<div class="sk-side">
 <p class="sk-count" id="sk-count">Праздник в странах и регионах: 30</p>
-</section>
-<div class="sk-map" id="sk-map" role="img" aria-label="У кого сегодня выходной?"></div>
-<div class="sk-tip" id="sk-tip" hidden></div>
-<section class="sk-list">
 <ul id="sk-list"><li>🇦🇸 <a href="/holidays/as/index-ru.html">Американское Самоа</a><span>День ветеранов</span></li><li>🇦🇴 <a href="/holidays/ao/index-ru.html">Ангола</a><span>Национальный день независимости</span></li><li>🇧🇪 <a href="/holidays/be/index-ru.html">Бельгия</a><span>День перемирия</span></li><li>🇧🇲 <a href="/holidays/bm/index-ru.html">Бермудские о-ва</a><span>День памяти</span></li><li>🇧🇹 <a href="/holidays/bt/index-ru.html">Бутан</a><span>День рождения 4-го Друк Гьялпо и День Конституции</span></li><li>🇻🇮 <a href="/holidays/vi/index-ru.html">Виргинские о-ва (США)</a><span>День ветеранов</span></li><li>🇺🇲 <a href="/holidays/um/index-ru.html">Внешние малые о-ва (США)</a><span>День ветеранов</span></li><li>🇬🇵 <a href="/holidays/gp/index-ru.html">Гваделупа</a><span>День перемирия</span></li><li>🇬🇺 <a href="/holidays/gu/index-ru.html">Гуам</a><span>День ветеранов</span></li><li>🇾🇹 <a href="/holidays/yt/index-ru.html">Майотта</a><span>День перемирия</span></li><li>🇲🇻 <a href="/holidays/mv/index-ru.html">Мальдивы</a><span>День Республики</span></li><li>🇲🇶 <a href="/holidays/mq/index-ru.html">Мартиника</a><span>День перемирия</span></li><li>🇫🇲 <a href="/holidays/fm/index-ru.html">Микронезия</a><span>День ветеранов зарубежных войн</span></li><li>🇳🇵 <a href="/holidays/np/index-ru.html">Непал</a><span>Бхаи Тика</span></li><li>🇳🇨 <a href="/holidays/nc/index-ru.html">Новая Каледония</a><span>День перемирия</span></li><li>🇵🇱 <a href="/holidays/pl/index-ru.html">Польша</a><span>Национальный день независимости</span></li><li>🇵🇷 <a href="/holidays/pr/index-ru.html">Пуэрто-Рико</a><span>День ветеранов</span></li><li>🇷🇪 <a href="/holidays/re/index-ru.html">Реюньон</a><span>День перемирия</span></li><li>🇲🇵 <a href="/holidays/mp/index-ru.html">Северные Марианские о-ва</a><span>День ветеранов</span></li><li>🇧🇱 <a href="/holidays/bl/index-ru.html">Сен-Бартелеми</a><span>День перемирия</span></li><li>🇲🇫 <a href="/holidays/mf/index-ru.html">Сен-Мартен</a><span>День перемирия</span></li><li>🇵🇲 <a href="/holidays/pm/index-ru.html">Сен-Пьер и Микелон</a><span>День перемирия</span></li><li>🇷🇸 <a href="/holidays/rs/index-ru.html">Сербия</a><span>День перемирия</span></li><li>🇸🇽 <a href="/holidays/sx/index-ru.html">Синт-Мартен</a><span>День Синт-Мартена</span></li><li>🇺🇸 <a href="/holidays/us/index-ru.html">Соединенные Штаты Америки</a><span>День ветеранов</span></li><li>🇼🇫 <a href="/holidays/wf/index-ru.html">Уоллис и Футуна</a><span>День перемирия</span></li><li>🇫🇷 <a href="/holidays/fr/index-ru.html">Франция</a><span>День перемирия</span></li><li>🇬🇫 <a href="/holidays/gf/index-ru.html">Французская Гвиана</a><span>День перемирия</span></li><li>🇵🇫 <a href="/holidays/pf/index-ru.html">Французская Полинезия</a><span>День перемирия</span></li><li>🇹🇫 <a href="/holidays/tf/index-ru.html">Французские Южные территории</a><span>День перемирия</span></li></ul>
 <p class="sk-none" id="sk-none" hidden>В этот день нет общенациональных праздников.</p>
+</div>
+</div>
 </section>
-<section class="sk-more">
-<h2>По месяцам</h2>
+<div class="sk-tip" id="sk-tip" hidden></div>
+<section class="sk-panel sk-more">
+<div class="sk-title"><span>По месяцам</span></div>
 <ul class="sk-months"><li><a href="/holidays/2026-01/index-ru.html">январь 2026 г.</a></li><li><a href="/holidays/2026-02/index-ru.html">февраль 2026 г.</a></li><li><a href="/holidays/2026-03/index-ru.html">март 2026 г.</a></li><li><a href="/holidays/2026-04/index-ru.html">апрель 2026 г.</a></li><li><a href="/holidays/2026-05/index-ru.html">май 2026 г.</a></li><li><a href="/holidays/2026-06/index-ru.html">июнь 2026 г.</a></li><li><a href="/holidays/2026-07/index-ru.html">июль 2026 г.</a></li><li><a href="/holidays/2026-08/index-ru.html">август 2026 г.</a></li><li><a href="/holidays/2026-09/index-ru.html">сентябрь 2026 г.</a></li><li><a href="/holidays/2026-10/index-ru.html">октябрь 2026 г.</a></li><li><a href="/holidays/2026-11/index-ru.html">ноябрь 2026 г.</a></li><li><a href="/holidays/2026-12/index-ru.html">декабрь 2026 г.</a></li><li><a href="/holidays/2027-01/index-ru.html">январь 2027 г.</a></li><li><a href="/holidays/2027-02/index-ru.html">февраль 2027 г.</a></li><li><a href="/holidays/2027-03/index-ru.html">март 2027 г.</a></li><li><a href="/holidays/2027-04/index-ru.html">апрель 2027 г.</a></li><li><a href="/holidays/2027-05/index-ru.html">май 2027 г.</a></li><li><a href="/holidays/2027-06/index-ru.html">июнь 2027 г.</a></li><li><a href="/holidays/2027-07/index-ru.html">июль 2027 г.</a></li><li><a href="/holidays/2027-08/index-ru.html">август 2027 г.</a></li><li><a href="/holidays/2027-09/index-ru.html">сентябрь 2027 г.</a></li><li><a href="/holidays/2027-10/index-ru.html">октябрь 2027 г.</a></li><li><a href="/holidays/2027-11/index-ru.html">ноябрь 2027 г.</a></li><li><a href="/holidays/2027-12/index-ru.html">декабрь 2027 г.</a></li></ul>
 <p><a class="sk-all" href="/holidays/index-ru.html">Праздники по странам →</a></p>
 </section>
-<aside class="sk-cta">
+<aside class="sk-panel sk-cta">
 <img src="/holidays/icon.png" alt="" width="56" height="56">
 <div><strong>Праздники 246 стран — офлайн</strong><span>World Holidays — бесплатное приложение: кто сегодня отдыхает, длинные выходные и рабочие дни с одного взгляда.</span></div>
 <div class="sk-btns"><a class="btn small" href="https://apps.apple.com/app/id6777892569" data-store="appstore" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.05 12.54c-.03-2.7 2.2-4 2.3-4.06-1.25-1.83-3.2-2.08-3.9-2.11-1.66-.17-3.24.98-4.08.98-.84 0-2.14-.96-3.52-.93-1.81.03-3.48 1.05-4.41 2.67-1.88 3.26-.48 8.09 1.35 10.74.9 1.3 1.96 2.75 3.36 2.7 1.35-.05 1.86-.87 3.49-.87 1.63 0 2.09.87 3.52.84 1.45-.03 2.37-1.32 3.26-2.62 1.03-1.5 1.45-2.96 1.48-3.03-.03-.01-2.83-1.09-2.85-4.31zM14.37 4.6c.74-.9 1.24-2.15 1.1-3.4-1.07.04-2.36.71-3.13 1.61-.69.8-1.29 2.07-1.13 3.3 1.19.09 2.41-.61 3.16-1.51z"/></svg>App Store</a><a class="btn small ghost" href="https://play.google.com/store/apps/details?id=com.keik.worldholidays" data-store="play" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.6 2.3c-.3.3-.5.8-.5 1.4v16.6c0 .6.2 1.1.5 1.4l9.3-9.7-9.3-9.7zm10.7 8.6 2.7-2.8L5.6 1.6l8.7 9.3zm0 2.2-8.7 9.3L17 15.9l-2.7-2.8zm6.1-2.5-2.3-1.3-3 3.1 3 3.1 2.3-1.3c1-.6 1-2.9 0-3.6z"/></svg>Google Play</a></div>

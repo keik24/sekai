@@ -47,7 +47,7 @@
 <meta property="og:title" content="今天哪些国家放假？ | Sekai">
 <meta property="og:description" content="在世界地图上查看今天哪些国家放假。点按国家即可打开该国的节假日日历。">
 <meta property="og:url" content="https://sekai.net/index-zh-hans.html">
-<meta name="theme-color" content="#070B14">
+<meta name="theme-color" content="#0A0A0A">
 <link rel="icon" href="/favico/favicon.ico">
 <link rel="stylesheet" href="/map/sekai.css">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "@id": "https://sekai.net/#site", "url": "https://sekai.net/index-zh-hans.html", "name": "Sekai", "description": "在世界地图上查看今天哪些国家放假。点按国家即可打开该国的节假日日历。", "inLanguage": "zh-Hans", "publisher": {"@type": "Organization", "name": "KeiK LLC", "url": "https://keik.co.jp"}}</script>
@@ -62,33 +62,40 @@ gtag('config', 'G-GTQW7RZ1VY');
 </head>
 <body>
 <header class="sk-head">
-<a class="sk-brand" href="/index-zh-hans.html">Sekai<span>世界</span></a>
+<a class="sk-brand" href="/index-zh-hans.html"><b>世界</b>sekai.net</a>
+<span class="sk-live"><i></i>LIVE</span>
 <nav><a href="/holidays/index-zh-hans.html">各国节假日</a><a class="sk-lang" href="#languages"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.8 2.5 15.2 0 18M12 3c-2.5 2.8-2.5 15.2 0 18"/></svg>简体中文</a></nav>
 </header>
 <main>
 <section class="sk-hero">
 <h1>今天哪些国家放假？</h1>
 <p class="sk-lead">在世界地图上查看今天哪些国家放假。点按国家即可打开该国的节假日日历。</p>
+</section>
+<section class="sk-panel sk-mapbox">
+<div class="sk-title"><span>SEKAI MAP</span><span class="sk-clock" id="sk-clock"></span></div>
+<div class="sk-stage">
+<div class="sk-map" id="sk-map" role="img" aria-label="今天哪些国家放假？"></div>
 <div class="sk-bar">
 <button type="button" id="sk-prev" aria-label="−1">‹</button>
 <time id="sk-date" datetime="2026-11-11">11月11日 周三</time>
 <button type="button" id="sk-next" aria-label="+1">›</button>
 <button type="button" id="sk-now">今天</button>
 </div>
+<div class="sk-zoom"><button type="button" id="sk-in" aria-label="+">+</button><button type="button" id="sk-out" aria-label="−">−</button><button type="button" id="sk-home" aria-label="⌂">⌂</button></div>
+<div class="sk-side">
 <p class="sk-count" id="sk-count">放假的国家和地区：30</p>
-</section>
-<div class="sk-map" id="sk-map" role="img" aria-label="今天哪些国家放假？"></div>
-<div class="sk-tip" id="sk-tip" hidden></div>
-<section class="sk-list">
 <ul id="sk-list"><li>🇧🇹 <a href="/holidays/bt/index-zh-hans.html">不丹</a><span>第四代国王诞辰暨宪法日</span></li><li>🇬🇺 <a href="/holidays/gu/index-zh-hans.html">关岛</a><span>退伍军人节</span></li><li>🇲🇵 <a href="/holidays/mp/index-zh-hans.html">北马里亚纳群岛</a><span>退伍军人节</span></li><li>🇧🇱 <a href="/holidays/bl/index-zh-hans.html">圣巴泰勒米</a><span>停战日</span></li><li>🇵🇲 <a href="/holidays/pm/index-zh-hans.html">圣皮埃尔和密克隆群岛</a><span>停战日</span></li><li>🇷🇸 <a href="/holidays/rs/index-zh-hans.html">塞尔维亚</a><span>停战日</span></li><li>🇦🇴 <a href="/holidays/ao/index-zh-hans.html">安哥拉</a><span>国家独立日</span></li><li>🇫🇲 <a href="/holidays/fm/index-zh-hans.html">密克罗尼西亚</a><span>海外战争退伍军人日</span></li><li>🇳🇵 <a href="/holidays/np/index-zh-hans.html">尼泊尔</a><span>兄妹节</span></li><li>🇳🇨 <a href="/holidays/nc/index-zh-hans.html">新喀里多尼亚</a><span>停战日</span></li><li>🇧🇪 <a href="/holidays/be/index-zh-hans.html">比利时</a><span>停战日</span></li><li>🇫🇷 <a href="/holidays/fr/index-zh-hans.html">法国</a><span>停战日</span></li><li>🇹🇫 <a href="/holidays/tf/index-zh-hans.html">法属南部领地</a><span>停战日</span></li><li>🇲🇫 <a href="/holidays/mf/index-zh-hans.html">法属圣马丁</a><span>停战日</span></li><li>🇬🇫 <a href="/holidays/gf/index-zh-hans.html">法属圭亚那</a><span>停战日</span></li><li>🇵🇫 <a href="/holidays/pf/index-zh-hans.html">法属波利尼西亚</a><span>停战日</span></li><li>🇵🇱 <a href="/holidays/pl/index-zh-hans.html">波兰</a><span>国家独立日</span></li><li>🇵🇷 <a href="/holidays/pr/index-zh-hans.html">波多黎各</a><span>退伍军人节</span></li><li>🇬🇵 <a href="/holidays/gp/index-zh-hans.html">瓜德罗普</a><span>停战日</span></li><li>🇼🇫 <a href="/holidays/wf/index-zh-hans.html">瓦利斯和富图纳</a><span>停战日</span></li><li>🇷🇪 <a href="/holidays/re/index-zh-hans.html">留尼汪</a><span>停战日</span></li><li>🇧🇲 <a href="/holidays/bm/index-zh-hans.html">百慕大</a><span>国殇纪念日</span></li><li>🇺🇸 <a href="/holidays/us/index-zh-hans.html">美国</a><span>退伍军人节</span></li><li>🇺🇲 <a href="/holidays/um/index-zh-hans.html">美国本土外小岛屿</a><span>退伍军人节</span></li><li>🇻🇮 <a href="/holidays/vi/index-zh-hans.html">美属维尔京群岛</a><span>退伍军人节</span></li><li>🇦🇸 <a href="/holidays/as/index-zh-hans.html">美属萨摩亚</a><span>退伍军人节</span></li><li>🇸🇽 <a href="/holidays/sx/index-zh-hans.html">荷属圣马丁</a><span>圣马丁日</span></li><li>🇲🇻 <a href="/holidays/mv/index-zh-hans.html">马尔代夫</a><span>共和国日</span></li><li>🇲🇶 <a href="/holidays/mq/index-zh-hans.html">马提尼克</a><span>停战日</span></li><li>🇾🇹 <a href="/holidays/yt/index-zh-hans.html">马约特</a><span>停战日</span></li></ul>
 <p class="sk-none" id="sk-none" hidden>这一天没有全国性节假日。</p>
+</div>
+</div>
 </section>
-<section class="sk-more">
-<h2>按月份查看</h2>
+<div class="sk-tip" id="sk-tip" hidden></div>
+<section class="sk-panel sk-more">
+<div class="sk-title"><span>按月份查看</span></div>
 <ul class="sk-months"><li><a href="/holidays/2026-01/index-zh-hans.html">2026年1月</a></li><li><a href="/holidays/2026-02/index-zh-hans.html">2026年2月</a></li><li><a href="/holidays/2026-03/index-zh-hans.html">2026年3月</a></li><li><a href="/holidays/2026-04/index-zh-hans.html">2026年4月</a></li><li><a href="/holidays/2026-05/index-zh-hans.html">2026年5月</a></li><li><a href="/holidays/2026-06/index-zh-hans.html">2026年6月</a></li><li><a href="/holidays/2026-07/index-zh-hans.html">2026年7月</a></li><li><a href="/holidays/2026-08/index-zh-hans.html">2026年8月</a></li><li><a href="/holidays/2026-09/index-zh-hans.html">2026年9月</a></li><li><a href="/holidays/2026-10/index-zh-hans.html">2026年10月</a></li><li><a href="/holidays/2026-11/index-zh-hans.html">2026年11月</a></li><li><a href="/holidays/2026-12/index-zh-hans.html">2026年12月</a></li><li><a href="/holidays/2027-01/index-zh-hans.html">2027年1月</a></li><li><a href="/holidays/2027-02/index-zh-hans.html">2027年2月</a></li><li><a href="/holidays/2027-03/index-zh-hans.html">2027年3月</a></li><li><a href="/holidays/2027-04/index-zh-hans.html">2027年4月</a></li><li><a href="/holidays/2027-05/index-zh-hans.html">2027年5月</a></li><li><a href="/holidays/2027-06/index-zh-hans.html">2027年6月</a></li><li><a href="/holidays/2027-07/index-zh-hans.html">2027年7月</a></li><li><a href="/holidays/2027-08/index-zh-hans.html">2027年8月</a></li><li><a href="/holidays/2027-09/index-zh-hans.html">2027年9月</a></li><li><a href="/holidays/2027-10/index-zh-hans.html">2027年10月</a></li><li><a href="/holidays/2027-11/index-zh-hans.html">2027年11月</a></li><li><a href="/holidays/2027-12/index-zh-hans.html">2027年12月</a></li></ul>
 <p><a class="sk-all" href="/holidays/index-zh-hans.html">各国节假日 →</a></p>
 </section>
-<aside class="sk-cta">
+<aside class="sk-panel sk-cta">
 <img src="/holidays/icon.png" alt="" width="56" height="56">
 <div><strong>246 个国家和地区的节假日，离线可查</strong><span>World Holidays 是一款免费 App，一眼看清今天哪些国家放假、哪里有连休以及工作日。</span></div>
 <div class="sk-btns"><a class="btn small" href="https://apps.apple.com/app/id6777892569" data-store="appstore" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.05 12.54c-.03-2.7 2.2-4 2.3-4.06-1.25-1.83-3.2-2.08-3.9-2.11-1.66-.17-3.24.98-4.08.98-.84 0-2.14-.96-3.52-.93-1.81.03-3.48 1.05-4.41 2.67-1.88 3.26-.48 8.09 1.35 10.74.9 1.3 1.96 2.75 3.36 2.7 1.35-.05 1.86-.87 3.49-.87 1.63 0 2.09.87 3.52.84 1.45-.03 2.37-1.32 3.26-2.62 1.03-1.5 1.45-2.96 1.48-3.03-.03-.01-2.83-1.09-2.85-4.31zM14.37 4.6c.74-.9 1.24-2.15 1.1-3.4-1.07.04-2.36.71-3.13 1.61-.69.8-1.29 2.07-1.13 3.3 1.19.09 2.41-.61 3.16-1.51z"/></svg>App Store</a><a class="btn small ghost" href="https://play.google.com/store/apps/details?id=com.keik.worldholidays" data-store="play" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.6 2.3c-.3.3-.5.8-.5 1.4v16.6c0 .6.2 1.1.5 1.4l9.3-9.7-9.3-9.7zm10.7 8.6 2.7-2.8L5.6 1.6l8.7 9.3zm0 2.2-8.7 9.3L17 15.9l-2.7-2.8zm6.1-2.5-2.3-1.3-3 3.1 3 3.1 2.3-1.3c1-.6 1-2.9 0-3.6z"/></svg>Google Play</a></div>

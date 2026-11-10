@@ -47,7 +47,7 @@
 <meta property="og:title" content="Who is off today? | Sekai">
 <meta property="og:description" content="See which countries are on a public holiday today on a live world map. Tap a country to open its holiday calendar.">
 <meta property="og:url" content="https://sekai.net/index-en.html">
-<meta name="theme-color" content="#070B14">
+<meta name="theme-color" content="#0A0A0A">
 <link rel="icon" href="/favico/favicon.ico">
 <link rel="stylesheet" href="/map/sekai.css">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "@id": "https://sekai.net/#site", "url": "https://sekai.net/index-en.html", "name": "Sekai", "description": "See which countries are on a public holiday today on a live world map. Tap a country to open its holiday calendar.", "inLanguage": "en", "publisher": {"@type": "Organization", "name": "KeiK LLC", "url": "https://keik.co.jp"}}</script>
@@ -62,33 +62,40 @@ gtag('config', 'G-GTQW7RZ1VY');
 </head>
 <body>
 <header class="sk-head">
-<a class="sk-brand" href="/index-en.html">Sekai<span>世界</span></a>
+<a class="sk-brand" href="/index-en.html"><b>世界</b>sekai.net</a>
+<span class="sk-live"><i></i>LIVE</span>
 <nav><a href="/holidays/index-en.html">Public holidays by country</a><a class="sk-lang" href="#languages"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.8 2.5 15.2 0 18M12 3c-2.5 2.8-2.5 15.2 0 18"/></svg>English</a></nav>
 </header>
 <main>
 <section class="sk-hero">
 <h1>Who is off today?</h1>
 <p class="sk-lead">See which countries are on a public holiday today on a live world map. Tap a country to open its holiday calendar.</p>
+</section>
+<section class="sk-panel sk-mapbox">
+<div class="sk-title"><span>SEKAI MAP</span><span class="sk-clock" id="sk-clock"></span></div>
+<div class="sk-stage">
+<div class="sk-map" id="sk-map" role="img" aria-label="Who is off today?"></div>
 <div class="sk-bar">
 <button type="button" id="sk-prev" aria-label="−1">‹</button>
 <time id="sk-date" datetime="2026-11-11">Wed, Nov 11</time>
 <button type="button" id="sk-next" aria-label="+1">›</button>
 <button type="button" id="sk-now">Today</button>
 </div>
+<div class="sk-zoom"><button type="button" id="sk-in" aria-label="+">+</button><button type="button" id="sk-out" aria-label="−">−</button><button type="button" id="sk-home" aria-label="⌂">⌂</button></div>
+<div class="sk-side">
 <p class="sk-count" id="sk-count">On holiday: 30 countries and regions</p>
-</section>
-<div class="sk-map" id="sk-map" role="img" aria-label="Who is off today?"></div>
-<div class="sk-tip" id="sk-tip" hidden></div>
-<section class="sk-list">
 <ul id="sk-list"><li>🇦🇸 <a href="/holidays/as/index-en.html">American Samoa</a><span>Veterans Day</span></li><li>🇦🇴 <a href="/holidays/ao/index-en.html">Angola</a><span>National Independence Day</span></li><li>🇧🇪 <a href="/holidays/be/index-en.html">Belgium</a><span>Armistice Day</span></li><li>🇧🇲 <a href="/holidays/bm/index-en.html">Bermuda</a><span>Remembrance Day</span></li><li>🇧🇹 <a href="/holidays/bt/index-en.html">Bhutan</a><span>Birth Anniversary of the Fourth Druk Gyalpo and Constitution Day</span></li><li>🇫🇷 <a href="/holidays/fr/index-en.html">France</a><span>Armistice Day</span></li><li>🇬🇫 <a href="/holidays/gf/index-en.html">French Guiana</a><span>Armistice Day</span></li><li>🇵🇫 <a href="/holidays/pf/index-en.html">French Polynesia</a><span>Armistice Day</span></li><li>🇹🇫 <a href="/holidays/tf/index-en.html">French Southern Territories</a><span>Armistice Day</span></li><li>🇬🇵 <a href="/holidays/gp/index-en.html">Guadeloupe</a><span>Armistice Day</span></li><li>🇬🇺 <a href="/holidays/gu/index-en.html">Guam</a><span>Veterans Day</span></li><li>🇲🇻 <a href="/holidays/mv/index-en.html">Maldives</a><span>Republic Day</span></li><li>🇲🇶 <a href="/holidays/mq/index-en.html">Martinique</a><span>Armistice Day</span></li><li>🇾🇹 <a href="/holidays/yt/index-en.html">Mayotte</a><span>Armistice Day</span></li><li>🇫🇲 <a href="/holidays/fm/index-en.html">Micronesia</a><span>Veterans of Foreign Wars Day</span></li><li>🇳🇵 <a href="/holidays/np/index-en.html">Nepal</a><span>Bhai Tika</span></li><li>🇳🇨 <a href="/holidays/nc/index-en.html">New Caledonia</a><span>Armistice Day</span></li><li>🇲🇵 <a href="/holidays/mp/index-en.html">Northern Mariana Islands</a><span>Veterans Day</span></li><li>🇵🇱 <a href="/holidays/pl/index-en.html">Poland</a><span>National Independence Day</span></li><li>🇵🇷 <a href="/holidays/pr/index-en.html">Puerto Rico</a><span>Veterans Day</span></li><li>🇷🇪 <a href="/holidays/re/index-en.html">Réunion</a><span>Armistice Day</span></li><li>🇷🇸 <a href="/holidays/rs/index-en.html">Serbia</a><span>Armistice Day</span></li><li>🇸🇽 <a href="/holidays/sx/index-en.html">Sint Maarten</a><span>Sint Maarten Day</span></li><li>🇧🇱 <a href="/holidays/bl/index-en.html">St. Barthélemy</a><span>Armistice Day</span></li><li>🇲🇫 <a href="/holidays/mf/index-en.html">St. Martin</a><span>Armistice Day</span></li><li>🇵🇲 <a href="/holidays/pm/index-en.html">St. Pierre &amp; Miquelon</a><span>Armistice Day</span></li><li>🇺🇲 <a href="/holidays/um/index-en.html">U.S. Outlying Islands</a><span>Veterans Day</span></li><li>🇻🇮 <a href="/holidays/vi/index-en.html">U.S. Virgin Islands</a><span>Veterans Day</span></li><li>🇺🇸 <a href="/holidays/us/index-en.html">United States</a><span>Veterans Day</span></li><li>🇼🇫 <a href="/holidays/wf/index-en.html">Wallis &amp; Futuna</a><span>Armistice Day</span></li></ul>
 <p class="sk-none" id="sk-none" hidden>No nationwide public holidays on this day.</p>
+</div>
+</div>
 </section>
-<section class="sk-more">
-<h2>By month</h2>
+<div class="sk-tip" id="sk-tip" hidden></div>
+<section class="sk-panel sk-more">
+<div class="sk-title"><span>By month</span></div>
 <ul class="sk-months"><li><a href="/holidays/2026-01/index-en.html">January 2026</a></li><li><a href="/holidays/2026-02/index-en.html">February 2026</a></li><li><a href="/holidays/2026-03/index-en.html">March 2026</a></li><li><a href="/holidays/2026-04/index-en.html">April 2026</a></li><li><a href="/holidays/2026-05/index-en.html">May 2026</a></li><li><a href="/holidays/2026-06/index-en.html">June 2026</a></li><li><a href="/holidays/2026-07/index-en.html">July 2026</a></li><li><a href="/holidays/2026-08/index-en.html">August 2026</a></li><li><a href="/holidays/2026-09/index-en.html">September 2026</a></li><li><a href="/holidays/2026-10/index-en.html">October 2026</a></li><li><a href="/holidays/2026-11/index-en.html">November 2026</a></li><li><a href="/holidays/2026-12/index-en.html">December 2026</a></li><li><a href="/holidays/2027-01/index-en.html">January 2027</a></li><li><a href="/holidays/2027-02/index-en.html">February 2027</a></li><li><a href="/holidays/2027-03/index-en.html">March 2027</a></li><li><a href="/holidays/2027-04/index-en.html">April 2027</a></li><li><a href="/holidays/2027-05/index-en.html">May 2027</a></li><li><a href="/holidays/2027-06/index-en.html">June 2027</a></li><li><a href="/holidays/2027-07/index-en.html">July 2027</a></li><li><a href="/holidays/2027-08/index-en.html">August 2027</a></li><li><a href="/holidays/2027-09/index-en.html">September 2027</a></li><li><a href="/holidays/2027-10/index-en.html">October 2027</a></li><li><a href="/holidays/2027-11/index-en.html">November 2027</a></li><li><a href="/holidays/2027-12/index-en.html">December 2027</a></li></ul>
 <p><a class="sk-all" href="/holidays/index-en.html">Public holidays by country →</a></p>
 </section>
-<aside class="sk-cta">
+<aside class="sk-panel sk-cta">
 <img src="/holidays/icon.png" alt="" width="56" height="56">
 <div><strong>Holidays in 246 countries, offline</strong><span>World Holidays is a free app that shows who is off today, long weekends and business days at a glance.</span></div>
 <div class="sk-btns"><a class="btn small" href="https://apps.apple.com/app/id6777892569" data-store="appstore" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.05 12.54c-.03-2.7 2.2-4 2.3-4.06-1.25-1.83-3.2-2.08-3.9-2.11-1.66-.17-3.24.98-4.08.98-.84 0-2.14-.96-3.52-.93-1.81.03-3.48 1.05-4.41 2.67-1.88 3.26-.48 8.09 1.35 10.74.9 1.3 1.96 2.75 3.36 2.7 1.35-.05 1.86-.87 3.49-.87 1.63 0 2.09.87 3.52.84 1.45-.03 2.37-1.32 3.26-2.62 1.03-1.5 1.45-2.96 1.48-3.03-.03-.01-2.83-1.09-2.85-4.31zM14.37 4.6c.74-.9 1.24-2.15 1.1-3.4-1.07.04-2.36.71-3.13 1.61-.69.8-1.29 2.07-1.13 3.3 1.19.09 2.41-.61 3.16-1.51z"/></svg>App Store</a><a class="btn small ghost" href="https://play.google.com/store/apps/details?id=com.keik.worldholidays" data-store="play" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.6 2.3c-.3.3-.5.8-.5 1.4v16.6c0 .6.2 1.1.5 1.4l9.3-9.7-9.3-9.7zm10.7 8.6 2.7-2.8L5.6 1.6l8.7 9.3zm0 2.2-8.7 9.3L17 15.9l-2.7-2.8zm6.1-2.5-2.3-1.3-3 3.1 3 3.1 2.3-1.3c1-.6 1-2.9 0-3.6z"/></svg>Google Play</a></div>
