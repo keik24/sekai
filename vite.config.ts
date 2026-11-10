@@ -351,9 +351,11 @@ export default defineConfig({
 
       workbox: {
         globPatterns: ['**/*.{js,css,ico,png,svg,woff2}', 'index.html'],
-        globIgnores: ['**/ml-*.js', '**/onnx*.wasm'],
+        // holidays/ = static country pages (public/holidays). Not part of the app shell: never precache them.
+        globIgnores: ['**/ml-*.js', '**/onnx*.wasm', 'holidays/**'],
         navigateFallback: '/index.html',
-        navigateFallbackDenylist: [/^\/api\//, /^\/settings/],
+        // /holidays/ must reach the static pages, not the dashboard shell.
+        navigateFallbackDenylist: [/^\/api\//, /^\/settings/, /^\/holidays/],
         skipWaiting: true,
         clientsClaim: true,
         cleanupOutdatedCaches: true,
