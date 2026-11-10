@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /api/
 
-Sitemap: https://sekai.net/holidays/sitemap.xml
+Sitemap: https://sekai.net/sitemap.xml

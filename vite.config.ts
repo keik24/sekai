@@ -355,7 +355,7 @@ export default defineConfig({
         globIgnores: ['**/ml-*.js', '**/onnx*.wasm', 'holidays/**'],
         navigateFallback: '/index.html',
         // /holidays/ must reach the static pages, not the dashboard shell.
-        navigateFallbackDenylist: [/^\/api\//, /^\/settings/, /^\/holidays/],
+        navigateFallbackDenylist: [/^\/api\//, /^\/settings/, /^\/holidays/, /^\/about/, /^\/privacy/],
         skipWaiting: true,
         clientsClaim: true,
         cleanupOutdatedCaches: true,
