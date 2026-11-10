@@ -1,0 +1,103 @@
+/* sekai.net のトップ（世界地図）。sekai_home.py が /map/sekai.css へ写す。
+   見た目は前の sekai.net の「管制画面」（黒地・灰色の陸・等幅の小さな大文字・細い枠・緑の差し色）を引き継ぐ。暗い画面だけ */
+:root {
+    --bg: #0A0A0A; --panel: #111111; --line: #262626; --land: #232323; --edge: #4A4A4A;
+    --ink: #E6E6E6; --muted: #8C8C8C; --glow: #4ADE80; --glow-ink: #04130A; --hot: #F97316; --link: #9BD7FF;
+    --mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, "Noto Sans Mono", monospace;
+}
+* { box-sizing: border-box; }
+html { background: var(--bg); color: var(--ink); -webkit-text-size-adjust: 100%; }
+body { margin: 0; font: 15px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans", "Noto Sans", sans-serif; }
+a { color: var(--link); }
+main { max-width: 1400px; margin: 0 auto; padding: 0 12px; }
+
+.sk-head { display: flex; align-items: center; gap: 14px; padding: 8px 12px; border-bottom: 1px solid var(--line); background: var(--panel); font-family: var(--mono); }
+.sk-brand { display: inline-flex; align-items: center; gap: 10px; font-size: 15px; letter-spacing: .12em; color: var(--ink); text-decoration: none; white-space: nowrap; }
+.sk-brand b { padding: 3px 7px; border: 1px solid var(--glow); border-radius: 4px; color: var(--glow); font-size: 12px; letter-spacing: .05em; }
+.sk-live { display: inline-flex; align-items: center; gap: 6px; font-size: 11px; letter-spacing: .14em; color: var(--muted); }
+.sk-live i { width: 7px; height: 7px; border-radius: 50%; background: var(--glow); box-shadow: 0 0 8px var(--glow); animation: sk-blink 2s ease-in-out infinite; }
+.sk-head nav { display: flex; align-items: center; gap: 14px; margin-inline-start: auto; font-size: 12px; min-width: 0; }
+.sk-head nav a { color: var(--muted); text-decoration: none; }
+.sk-head nav a:first-child { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.sk-lang { display: inline-flex; align-items: center; gap: 6px; padding: 5px 10px; border: 1px solid var(--line); border-radius: 4px; color: var(--ink) !important; white-space: nowrap; }
+.sk-lang svg { width: 14px; height: 14px; }
+
+.sk-hero { padding: 16px 2px 12px; }
+.sk-hero h1 { margin: 0; font-size: clamp(22px, 4vw, 34px); line-height: 1.25; }
+.sk-lead { max-width: 720px; margin: 6px 0 0; color: var(--muted); font-size: 14px; }
+
+.sk-panel { border: 1px solid var(--line); background: var(--panel); margin-bottom: 12px; }
+.sk-title { display: flex; justify-content: space-between; gap: 12px; padding: 7px 12px; border-bottom: 1px solid var(--line); font-family: var(--mono); font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); }
+.sk-clock { font-variant-numeric: tabular-nums; }
+
+.sk-stage { position: relative; background: #0D0D0D; overflow: hidden; }
+.sk-map { min-height: 200px; }
+.sk-map svg { display: block; width: 100%; height: auto; cursor: grab; }
+.sk-map svg.dragging { cursor: grabbing; }
+.sk-sphere { fill: #101010; }
+.sk-grat { fill: none; stroke: #1A1A1A; vector-effect: non-scaling-stroke; }
+.sk-c { fill: var(--land); stroke: var(--edge); stroke-width: .6; vector-effect: non-scaling-stroke; transition: fill .3s; }
+.sk-c.link { cursor: pointer; }
+.sk-c.link:hover { fill: #333333; }
+.sk-c.on { fill: #14532D; stroke: var(--glow); stroke-width: 1; filter: drop-shadow(0 0 4px rgba(74, 222, 128, .55)); }
+.sk-c.on:hover { fill: #1B7A40; }
+.sk-night { fill: #000; opacity: .42; pointer-events: none; }
+.sk-dot { fill: var(--hot); stroke: #1A0E05; vector-effect: non-scaling-stroke; cursor: pointer; }
+.sk-ring { fill: none; stroke: var(--hot); vector-effect: non-scaling-stroke; pointer-events: none; animation: sk-ping 2.6s ease-out infinite; transform-box: fill-box; transform-origin: center; }
+.sk-label { font-family: var(--mono); fill: #D4D4D4; letter-spacing: .12em; text-anchor: middle; pointer-events: none; paint-order: stroke; stroke: #0A0A0A; text-transform: uppercase; }
+@keyframes sk-ping { from { transform: scale(1); opacity: .9; } to { transform: scale(3.2); opacity: 0; } }
+@keyframes sk-blink { 50% { opacity: .35; } }
+@media (prefers-reduced-motion: reduce) { .sk-ring, .sk-live i { animation: none; } .sk-ring { display: none; } .sk-c { transition: none; } }
+
+.sk-bar { position: absolute; top: 10px; left: 50%; transform: translateX(-50%); display: inline-flex; align-items: center; gap: 2px; padding: 3px; border: 1px solid var(--line); background: rgba(17, 17, 17, .92); font-family: var(--mono); }
+.sk-bar button, .sk-zoom button { min-width: 40px; min-height: 40px; border: 0; background: transparent; color: var(--ink); font: inherit; font-size: 20px; cursor: pointer; }
+.sk-bar button:hover, .sk-zoom button:hover { background: var(--line); }
+.sk-bar #sk-now { font-size: 12px; font-weight: 700; letter-spacing: .08em; padding: 0 12px; background: var(--glow); color: var(--glow-ink); }
+.sk-bar time { min-width: 10.5em; text-align: center; font-size: 13px; letter-spacing: .06em; text-transform: uppercase; font-variant-numeric: tabular-nums; }
+.sk-zoom { position: absolute; top: 10px; inset-inline-end: 10px; display: flex; flex-direction: column; gap: 4px; }
+.sk-zoom button { border: 1px solid var(--line); background: rgba(17, 17, 17, .92); font-family: var(--mono); }
+
+.sk-side { position: absolute; top: 10px; inset-inline-start: 10px; width: 250px; max-height: calc(100% - 20px); overflow: auto; border: 1px solid var(--line); background: rgba(17, 17, 17, .92); }
+.sk-count { margin: 0; padding: 8px 10px; border-bottom: 1px solid var(--line); font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--glow); }
+.sk-side ul { list-style: none; margin: 0; padding: 0; }
+.sk-side li { padding: 6px 10px; border-bottom: 1px solid #1B1B1B; font-size: 13px; line-height: 1.4; }
+.sk-side li span { display: block; color: var(--muted); font-size: 12px; }
+.sk-side a { color: var(--ink); font-weight: 600; text-decoration: none; }
+.sk-side a:hover { color: var(--glow); }
+.sk-none { margin: 0; padding: 10px; color: var(--muted); font-size: 13px; }
+
+.sk-tip { position: fixed; z-index: 5; max-width: 260px; padding: 7px 10px; border: 1px solid var(--edge); background: rgba(10, 10, 10, .96); font-size: 13px; pointer-events: none; }
+.sk-tip b { display: block; }
+.sk-tip span { color: var(--glow); }
+
+.sk-months { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; margin: 0; padding: 12px; }
+.sk-months a { display: inline-block; padding: 5px 10px; border: 1px solid var(--line); text-decoration: none; font-size: 13px; color: var(--ink); }
+.sk-months a:hover { border-color: var(--glow); color: var(--glow); }
+.sk-more p { margin: 0; padding: 0 12px 12px; }
+.sk-all { font-weight: 700; text-decoration: none; }
+
+.sk-cta { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; padding: 14px; }
+.sk-cta img { border-radius: 13px; }
+.sk-cta > div:first-of-type { flex: 1 1 240px; }
+.sk-cta strong { display: block; font-size: 16px; }
+.sk-cta span { color: var(--muted); font-size: 13px; }
+.sk-btns { display: flex; flex-wrap: wrap; gap: 8px; }
+.sk-btns .btn { display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px; border-radius: 6px; background: var(--ink); color: #0A0A0A; font-weight: 700; font-size: 14px; text-decoration: none; }
+.sk-btns .btn.ghost { background: transparent; color: var(--ink); border: 1px solid var(--edge); }
+.sk-btns .btn svg { width: 18px; height: 18px; margin-inline-end: 6px; }
+
+.sk-foot { border-top: 1px solid var(--line); padding: 22px 12px 36px; color: var(--muted); font-size: 13px; }
+.sk-foot nav { display: flex; flex-wrap: wrap; gap: 8px 18px; max-width: 1400px; margin: 0 auto 12px; }
+.sk-foot a { color: var(--muted); }
+.sk-foot .sk-langs a[aria-current] { color: var(--ink); font-weight: 700; }
+.sk-foot p { max-width: 1400px; margin: 0 auto; font-size: 12px; }
+
+@media (max-width: 860px) {
+    .sk-side { position: static; width: auto; max-height: none; border: 0; border-top: 1px solid var(--line); }
+    .sk-bar { position: static; transform: none; display: flex; justify-content: center; border: 0; border-bottom: 1px solid var(--line); }
+    .sk-zoom { top: 58px; }
+    .sk-live { display: none; }
+}
+@media (max-width: 560px) {
+    .sk-head nav a:first-child { display: none; }
+}
