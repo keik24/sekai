@@ -306,3 +306,34 @@ h2.title { font-size: clamp(24px, 3.4vw, 30px); letter-spacing: -0.015em; line-h
 .hol-in-day li { break-inside: avoid; padding: 4px 0; }
 .hol-in-day .n { color: var(--muted); font-size: 14px; margin-inline-start: 6px; }
 @media (max-width: 520px) { .hol-list li { grid-template-columns: 1fr; } .hol-list .d { grid-column: 1; } }
+
+:root, :root:root {
+    --bg: #0A0A0A; --fg: #E6E6E6; --muted: #9A9A9A; --card: #111111; --soft: #111111; --edge: #262626; --shadow: #000000;
+    --line: #262626; --c1: #4ADE80; --c1-ink: #9BD7FF; --c1-soft: #12301F;
+    --px: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, "Noto Sans Mono", monospace;
+}
+html { background: #0A0A0A; }
+a, a:visited { color: #9BD7FF; }
+.head { border-bottom: 1px solid #262626; background: #111111; }
+.head .wrap { height: 48px; }
+.head .brand { display: inline-flex; align-items: center; gap: 10px; font-size: 15px; letter-spacing: .12em; }
+.head .brand b { padding: 3px 7px; border: 1px solid #4ADE80; border-radius: 4px; color: #4ADE80; font-size: 12px; font-weight: 400; letter-spacing: .05em; }
+.head .nav { display: flex; align-items: center; gap: 14px; font-family: var(--px); font-size: 12px; }
+.head .nav a { color: #9A9A9A; }
+.head .nav .lang { color: #E6E6E6; border: 1px solid #262626; border-radius: 4px; padding: 5px 10px; box-shadow: none; }
+.crumbs { font-family: var(--px); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; }
+.crumbs a { color: #9A9A9A; }
+.hol-wrap h1 { letter-spacing: 0; }
+.hol-year h2, .hol-day { font-family: var(--px); letter-spacing: .06em; }
+.hol-year span, .hol-list time { font-family: var(--px); }
+.hol-list .r { color: #4ADE80; border-radius: 4px; }
+.hol-today a { background: #4ADE80; color: #04130A; border-radius: 4px; font-family: var(--px); letter-spacing: .06em; }
+.hol-months a, .hol-countries a { color: #E6E6E6; }
+.hol-months a { border-radius: 0; }
+.hol-months a:hover, .hol-countries a:hover { color: #4ADE80; border-color: #4ADE80; text-decoration: none; }
+.hol-day:target { background: #12301F; color: #4ADE80; border-radius: 0; }
+.hol-cta { border: 1px solid #262626; border-radius: 0; background: #111111; }
+.hol-cta .btn { border-radius: 6px; box-shadow: none; border-width: 1px; }
+.foot { background: #0A0A0A; border-top: 1px solid #262626; }
+.get-bar { border-top: 1px solid #262626; }
+@media (max-width: 560px) { .head .nav a:first-child { display: none; } }
