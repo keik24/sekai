@@ -1,0 +1,80 @@
+/* sekai.net のトップ（世界地図）。sekai_home.py が /map/sekai.css へ写す。暗い画面だけ（地図を主役にするため） */
+:root {
+    --bg: #070B14; --panel: #0E1524; --line: #1F2A40; --land: #162036; --edge: #2A3A5C;
+    --ink: #E9EEF8; --muted: #93A0B8; --glow: #4FE3C1; --glow-ink: #062019; --link: #9CC2FF;
+}
+* { box-sizing: border-box; }
+html { background: var(--bg); color: var(--ink); -webkit-text-size-adjust: 100%; }
+body { margin: 0; font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans", "Noto Sans", sans-serif; }
+a { color: var(--link); }
+main { max-width: 1200px; margin: 0 auto; padding: 0 16px; }
+
+.sk-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; max-width: 1200px; margin: 0 auto; padding: 14px 16px; }
+.sk-brand { font-size: 22px; font-weight: 800; letter-spacing: .04em; color: var(--ink); text-decoration: none; white-space: nowrap; }
+.sk-brand span { margin-inline-start: 8px; font-size: 13px; font-weight: 600; color: var(--glow); }
+.sk-head nav { display: flex; align-items: center; gap: 14px; font-size: 14px; min-width: 0; }
+.sk-head nav a { color: var(--muted); text-decoration: none; }
+.sk-head nav a:first-child { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.sk-lang { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border: 1px solid var(--line); border-radius: 99px; color: var(--ink) !important; white-space: nowrap; }
+.sk-lang svg { width: 16px; height: 16px; }
+
+.sk-hero { text-align: center; padding: 18px 0 6px; }
+.sk-hero h1 { margin: 0; font-size: clamp(26px, 5.4vw, 46px); line-height: 1.2; letter-spacing: -.01em; }
+.sk-lead { max-width: 640px; margin: 10px auto 16px; color: var(--muted); font-size: 15px; }
+.sk-bar { display: inline-flex; align-items: center; gap: 8px; padding: 6px; border: 1px solid var(--line); border-radius: 99px; background: var(--panel); }
+.sk-bar button { min-width: 44px; min-height: 44px; border: 0; border-radius: 99px; background: transparent; color: var(--ink); font: inherit; font-size: 22px; cursor: pointer; }
+.sk-bar button:hover { background: var(--line); }
+.sk-bar #sk-now { font-size: 14px; font-weight: 700; padding: 0 16px; background: var(--glow); color: var(--glow-ink); }
+.sk-bar time { min-width: 9.5em; font-weight: 700; font-variant-numeric: tabular-nums; }
+.sk-count { margin: 12px 0 0; color: var(--glow); font-weight: 700; }
+
+.sk-map { position: relative; margin: 8px -16px 0; }
+.sk-map svg { display: block; width: 100%; height: auto; }
+.sk-sphere { fill: #0A1120; stroke: var(--line); }
+.sk-grat { fill: none; stroke: #142038; stroke-width: .5; }
+.sk-c { fill: var(--land); stroke: var(--edge); stroke-width: .4; transition: fill .3s; }
+.sk-c.on { fill: var(--glow); stroke: #B9FFF0; cursor: pointer; filter: drop-shadow(0 0 5px rgba(79, 227, 193, .85)); animation: sk-pulse 3.2s ease-in-out infinite; }
+.sk-c.link { cursor: pointer; }
+.sk-c.link:hover { fill: #24365A; }
+.sk-c.on:hover { fill: #B9FFF0; }
+.sk-dot { fill: var(--glow); stroke: #B9FFF0; stroke-width: .5; cursor: pointer; filter: drop-shadow(0 0 4px rgba(79, 227, 193, .9)); }
+.sk-night { fill: #000; opacity: .38; pointer-events: none; }
+@keyframes sk-pulse { 50% { filter: drop-shadow(0 0 11px rgba(79, 227, 193, 1)); } }
+@media (prefers-reduced-motion: reduce) { .sk-c.on { animation: none; } .sk-c { transition: none; } }
+
+.sk-tip { position: fixed; z-index: 5; max-width: 260px; padding: 8px 12px; border: 1px solid var(--edge); border-radius: 10px; background: rgba(14, 21, 36, .96); font-size: 14px; pointer-events: none; }
+.sk-tip b { display: block; }
+.sk-tip span { color: var(--glow); }
+
+.sk-list ul { list-style: none; margin: 18px 0 0; padding: 0; columns: 3 260px; column-gap: 28px; }
+.sk-list li { break-inside: avoid; padding: 7px 0; border-bottom: 1px solid var(--line); }
+.sk-list li span { display: block; color: var(--muted); font-size: 14px; }
+.sk-list a { font-weight: 700; text-decoration: none; }
+.sk-none { text-align: center; color: var(--muted); }
+
+.sk-more { margin-top: 36px; }
+.sk-more h2 { font-size: 20px; margin: 0 0 10px; }
+.sk-months { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; margin: 0 0 16px; padding: 0; }
+.sk-months a { display: inline-block; padding: 6px 12px; border: 1px solid var(--line); border-radius: 99px; text-decoration: none; font-size: 14px; }
+.sk-all { font-weight: 700; text-decoration: none; }
+
+.sk-cta { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; margin: 32px 0; padding: 18px; border: 1px solid var(--line); border-radius: 18px; background: var(--panel); }
+.sk-cta img { border-radius: 13px; }
+.sk-cta > div:first-of-type { flex: 1 1 240px; }
+.sk-cta strong { display: block; font-size: 17px; }
+.sk-cta span { color: var(--muted); font-size: 14px; }
+.sk-btns { display: flex; flex-wrap: wrap; gap: 8px; }
+.sk-btns .btn { display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px; border-radius: 12px; background: var(--ink); color: #0A0F1A; font-weight: 700; font-size: 14px; text-decoration: none; }
+.sk-btns .btn.ghost { background: transparent; color: var(--ink); border: 1px solid var(--edge); }
+.sk-btns .btn svg { width: 18px; height: 18px; margin-inline-end: 6px; }
+
+.sk-foot { border-top: 1px solid var(--line); padding: 28px 16px 40px; color: var(--muted); font-size: 14px; }
+.sk-foot nav { display: flex; flex-wrap: wrap; gap: 8px 18px; max-width: 1200px; margin: 0 auto 14px; }
+.sk-foot a { color: var(--muted); }
+.sk-foot .sk-langs a[aria-current] { color: var(--ink); font-weight: 700; }
+.sk-foot p { max-width: 1200px; margin: 0 auto; font-size: 12px; }
+
+@media (max-width: 560px) {
+    .sk-head nav a:first-child { display: none; }
+    .sk-bar time { min-width: 7.5em; font-size: 15px; }
+}
